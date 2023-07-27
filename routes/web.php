@@ -93,4 +93,4 @@ Route::get('/login',[RegisterController::class,'showLogin'])->name('showLogin');
 Route::post('/login_user',[RegisterController::class,'login'])->name('login_user');
 
 //--product detail--//
-Route::get('/product_detail',[ProductDetailController::class,'get']);
+Route::get('/product_detail/{product_id}',[ProductDetailController::class,'get']);

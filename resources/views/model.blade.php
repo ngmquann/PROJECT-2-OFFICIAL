@@ -79,6 +79,7 @@
               <div class="row">
                 @foreach ($filter as $item)
                 <div class="item col-xs-12 col-md-6 col-lg-4 mt-3">
+                  <a href="{{url('product_detail/'.$item->product_id)}}" class="item col-xs-12 col-md-6 col-lg-4 mt-3 detail">
                   <div class="card">
                     <img class="card-img-top" src="{{ asset("/img-product/$item->image") }}" alt="" />
                     <div class="card-body">
@@ -116,6 +117,7 @@
                       </div>
                     </div>
                   </div>
+                </a>
                 </div>
                 @endforeach
               </div>

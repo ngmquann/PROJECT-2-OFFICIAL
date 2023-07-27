@@ -16,6 +16,10 @@
     display: inline-block;
 }
 
+.detail {
+    text-decoration: none;
+}
+
 .col-lg-12 .card-img-top {
     width: calc(164px - 37px);
     float: left;
