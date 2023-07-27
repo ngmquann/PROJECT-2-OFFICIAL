@@ -1,0 +1,44 @@
+/*category_status*/
+span.hides
+{
+    color: red;
+    font-weight: bold;
+}
+span.display
+{
+    color: green;
+    font-weight: bold;
+}
+span.message_status
+{
+    color: green;
+    font-weight: bold;
+
+}
+span.message_login
+{
+    color: red;
+    font-weight: bold;
+}
+.active{
+    display: flex;
+    flex-direction: row;
+}
+.active a{
+    display: flex;
+    flex-direction: row;
+    width: 90px;
+    height: 40px;
+    line-height: 20px;
+    /* justify-content: center; */
+    align-items: center;
+    margin-right: 10px;
+}
+.active a i{
+    margin-right: 5px;
+    line-height: 20px;
+}
+.form-group-submit
+{
+    padding-bottom: 10px;
+}

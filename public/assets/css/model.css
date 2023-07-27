@@ -1,0 +1,44 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .col-lg-12 .card {
+    width: 100% !important;
+    display: inline-block;
+  }
+  
+  .col-lg-12 .card-img-top {
+    width: 20%;
+    float: left;
+  }
+  
+  .col-lg-12 .card-body {
+    margin-left: 20%;
+  }
+  
+  ins {
+    text-decoration: none;
+  }
+  
+  .card-body {
+    margin: 0 auto;
+  }
+  
+  .col-lg-4 .card-title {
+    text-align: center;
+  }
+  
+  .card-btn {
+    justify-content: center;
+    display: flex !important;
+  }
+  
+  .col-lg-12 .card-title,
+  .col-lg-12 .card-text {
+    text-align: center;
+  }
+  
+  .name-brand {
+    text-decoration: none;
+  }

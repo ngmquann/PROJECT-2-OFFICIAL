@@ -1,0 +1,62 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-body > .row {
+    margin: 0 auto;
+}
+
+.col-lg-4 .card-body {
+    text-align: center;
+}
+
+.col-lg-12 .card {
+    width: 100% !important;
+    display: inline-block;
+}
+
+.col-lg-12 .card-img-top {
+    width: calc(164px - 37px);
+    float: left;
+}
+
+.col-lg-12 .card-body {
+    margin-left: 20%;
+}
+
+.col-lg-4 > .card {
+    width: 294px;
+    height: 478px;
+}
+
+.col-lg-4 > .card > .card-body > .h6 {
+    width: 276px;
+    height: 57px;
+}
+
+.icon-buy {
+    display: flex;
+    justify-content: center;
+}
+
+.item > .card > .card-body {
+    padding-left: 0;
+}
+
+@media (min-width: 768px) and (max-width: 1440px) {
+    .col-lg-4 > .card {
+        width: 215px;
+        height: 423px;
+    }
+
+    .col-lg-4 > .card > .card-body > .h6 {
+        width: 199px;
+        height: 57px;
+        overflow: hidden;
+    }
+}
+
+.link-offset-2 {
+    color: black;
+}
