@@ -1,6 +1,7 @@
 @extends('layout.layout2')
 @section('content')
 <div class="u-body u-xl-mode">
+@foreach($filter as $item)
 <section class="u-clearfix u-grey-5 u-section-1" id="sec-2dd8" style="background-color: #fff;">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1"><!--product--><!--product_options_json--><!--{"source":""}--><!--/product_options_json--><!--product_item-->
         <div class="u-container-style u-expanded-width u-product u-product-1">
@@ -9,9 +10,7 @@
               <div class="u-carousel-inner u-gallery-inner" role="listbox"><!--product_gallery_item-->
                 <div class="active u-active u-carousel-item u-gallery-item u-shape-rectangle">
                   <div class="u-back-slide">
-                    @foreach($filter as $item)
                     <img class="u-back-image u-expanded" src="{{ asset("/img-product/$item->image") }}">
-                    @endforeach
                   </div>
                   <div class="u-over-slide u-over-slide-1">
                     <h3 class="u-gallery-heading">Sample Title</h3>
@@ -50,22 +49,19 @@
               </a>
               <ol class="u-carousel-thumbnails u-spacing-25 u-carousel-thumbnails-1"><!--product_gallery_thumbnail-->
                 <li class="u-active u-carousel-thumbnail u-carousel-thumbnail-1" data-u-target="#carousel-1d4a" data-u-slide-to="0">
-                  @foreach($filter as $item)
                     <img class="u-carousel-thumbnail-image u-image" src="{{ asset("/img-product/$item->image") }}">
-                  @endforeach  
                 </li><!--/product_gallery_thumbnail--><!--product_gallery_thumbnail-->
                 <li class="u-carousel-thumbnail u-carousel-thumbnail-2" data-u-target="#carousel-1d4a" data-u-slide-to="1">
                   <img class="u-carousel-thumbnail-image u-image" src="data:image/svg+xml;base64,DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9Im1hbiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIyNTZweCIgaGVpZ2h0PSIyNTZweCIgdmlld0JveD0iMCAwIDI1NiAyNTYiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI1NiAyNTYiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHJlY3QgZmlsbD0iI0M2RDhFMSIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiLz4NCjxwYXRoIGZpbGw9IiM3Rjk2QTYiIGQ9Ik0xMTAuOCw0My45Yy0yLjIsMTUuNi0xNS45LDI5LTE5LjUsNDMuOWMtMy4zLDE0LjEtMi45LDI4LjktMy43LDQzLjRjLTAuNywxMy40LTEuMSwyNy0xLjEsNDAuNQ0KCWMwLDYuNS0yLjYsMzEuNC0xLjgsMzdjMTQuNywxNy42LDc0LjgsNy44LDc3LjEsNC40YzEuMy0xLjktMS40LTE4LTAuNy0yNi45Yy0xLjItMjIuMSwwLjUtNTEuNiwxLjEtNjYuMQ0KCWMwLjUtMTMuNCwzLjMtMjUuOSwzLjMtMzkuNHMtMy44LTIzLjgtMTAuMy0zNS4zYy0yLjMtNC4xLTQuOC04LTgtMTEuNWMtNC40LTQuOC00LjktNC4yLTEwLTAuN2MtMy44LDIuNi02LjYsNS4xLTExLDYuNg0KCWMtMy42LDEuMy05LjQsMy4zLTE1LjgsNC4yIi8+DQo8cGF0aCBmaWxsPSIjQzZEOEUxIiBkPSJNMTU3LDExOC44YzQuOS0yOS4zLDIuMy00OC43LTcuOC01Ny43Yy04LjEtNy4yLTE3LjgtNS0xOS4zLTQuNmMtNC42LDAuNi04LjUsMi45LTExLjMsNi44DQoJYy0xMS40LDE1LjYtNC45LDUyLjEtNC4yLDU2LjJ2MC4xdjAuMWwwLjIsMC44aDAuMWMyLDQuNSwxMy44LDUuNywyMSw1LjdzMTkuMS0xLjMsMjEtNS44bDAsMGwwLDBjMC4yLTAuNCwwLjMtMC44LDAuMy0xLjMNCglDMTU3LDExOC45LDE1NywxMTguOSwxNTcsMTE4Ljh6IE0xMzUuNywxMjJjLTEwLjgsMC0xNi4xLTIuMi0xNy4yLTMuMWMxLjEtMC45LDYuMy0zLjEsMTcuMi0zLjFzMTYuMSwyLjIsMTcuMiwzLjENCglDMTUxLjgsMTE5LjgsMTQ2LjUsMTIyLDEzNS43LDEyMnogTTEyMS43LDY1LjZjMi4yLTMsNS4xLTQuNyw4LjctNS4yaDAuNWwwLjEtMC4xYzEuMi0wLjMsOS0xLjksMTUuNCwzLjhjNiw1LjQsMTEuOSwxOC42LDcuMSw1MC44DQoJYy00LjUtMi4yLTEyLjQtMi45LTE3LjgtMi45Yy01LjUsMC0xMy42LDAuNy0xOC4xLDNDMTE2LDEwMy4zLDExMy40LDc3LDEyMS43LDY1LjZ6Ii8+DQo8cGF0aCBmaWxsPSIjQzZEOEUxIiBkPSJNMTQ3LjUsMzIuNmwtMi0wLjJsLTAuMiwwLjljLTAuNSwyLjUtNS43LDYuMy0xNC40LDEwLjNjLTYuNywzLjQtMTYsNS4zLTE5LjksNC4ybC0xLTAuM2wtMS4zLDMuOGwxLDAuMw0KCWMxLjEsMC4zLDIuMywwLjQsMy45LDAuNGM1LjQsMCwxMy4zLTIsMTkuMi00LjljMTUuMy03LjIsMTYuMy0xMS41LDE2LjYtMTMuMmwwLjItMUwxNDcuNSwzMi42eiIvPg0KPC9zdmc+DQo=">
                 </li><!--/product_gallery_thumbnail-->
               </ol>
             </div><!--/product_gallery--><!--product_title-->
-            @foreach($filter as $item)
             <h3 class="u-product-control u-text u-text-default u-text-1">
-            {{$item->product_name}}
-            </h3><!--/product_title--><!--product_price-->
-            @endforeach  
+              {{$item->product_name}} 
+              <br>
+              <span style="font-size: 1.3rem; font-style: italic;">{{$item->brand_name}}</span>
+            </h3><!--/product_title--><!--product_price--> 
             <div class="u-product-control u-product-price u-product-price-1">
-              @foreach($filter as $item)
               <div class="u-price-wrapper u-spacing-10"><!--product_old_price-->
               @if ($item->sale == null)
                 <div class="u-hide-price u-old-price" style="text-decoration: line-through !important;"><!--product_old_price_content-->${{$item->sale}}<!--/product_old_price_content--></div><!--/product_old_price--><!--product_regular_price-->
@@ -74,8 +70,8 @@
               @endif
                 <div class="u-price" style="font-size: 1.5rem; font-weight: 700;"><!--product_regular_price_content-->${{$item->product_price}}<!--/product_regular_price_content--></div><!--/product_regular_price-->
               </div>
-              @endforeach  
-            </div><!--/product_price--><!--product_variations-->
+            </div><!--/product_price-->
+            <!--product_variations-->
             <div class="u-product-control u-product-variations u-product-variations-1"><!--product_variation-->
               <div class="u-product-variant">
                 <div class="col-12">
@@ -85,11 +81,23 @@
                   <button class="btn btn-light" id="btn-plus"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div><!--/product_variation-->
-            </div><!--/product_variations--><!--product_content-->
+            </div><!--/product_variations-->
+            <div class="u-product-control u-product-price u-product-price-1">
+              <div class="u-price-wrapper u-spacing-10"><!--product_old_price-->
+                @if($item->product_status == 1)
+                <div class="u-price" style="font-size: 1rem;">
+                  <b>Status: <i>Stocking</i></b>
+                </div>
+                @else
+                <div class="u-price" style="font-size: 1rem;">
+                  <b>Status: <i>Sold out</i></b>
+                </div>
+                @endif
+              </div>
+            </div><!--/product_price-->
+            <!--product_content-->
             <div class="u-product-control u-product-desc u-text u-text-2"><!--product_content_content-->
-              @foreach($filter as $item)
                 <p>{{$item->product_des}}</p><!--/product_content_content-->
-              @endforeach  
             </div><!--/product_content--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart","content":""}--><!--/options_json-->
             <a href="#" class="u-black u-btn u-button-style u-product-control u-btn-1"><!--product_button_content-->Add to Cart<!--/product_button_content--></a><!--/product_button-->
           </div>
@@ -100,7 +108,6 @@
     </section>
     <section class="u-clearfix u-section-2" id="sec-aa2f">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        @foreach($filter as $item)
         <div class="fr-view u-align-center u-clearfix u-rich-text u-text u-text-1">
             <h1 style="text-align: center;">{{$item->product_name}}</h1>
           <p style="text-align: center;">
@@ -109,73 +116,36 @@
             </span>
           </p>
         </div>
-        @endforeach
+        <h3 style="text-align: center;">Related Product</h3>
+        <hr>
       </div>
     </section>
+@endforeach    
     <section class="u-align-center u-clearfix u-section-3" id="sec-dff5">
-      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1"><!--products--><!--products_options_json--><!--{"type":"Recent","source":"","tags":"","count":""}--><!--/products_options_json-->
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-expanded-width u-products u-products-1">
-          <div class="u-repeater u-repeater-1"><!--product_item-->
+          <div class="u-repeater u-repeater-1">
+            @foreach($relate as $item)
             <div class="u-align-center u-container-style u-products-item u-repeater-item">
-              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1"><!--product_image-->
-                <img alt="" class="u-expanded-width u-image u-image-default u-product-control u-image-1" src="data:image/svg+xml;base64,DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9Im1hbiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIyNTZweCIgaGVpZ2h0PSIyNTZweCIgdmlld0JveD0iMCAwIDI1NiAyNTYiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI1NiAyNTYiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHJlY3QgZmlsbD0iI0M2RDhFMSIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiLz4NCjxwYXRoIGZpbGw9IiM3Rjk2QTYiIGQ9Ik0xODcuNywxMjEuNmMtMS44LTEuOC0yLjEtMTIuNi02LTEzLjdjLTMuOSw2LjYsMC45LDk5LjMtMC42LDEwMy4xYy0xLjEsOC44LTUzLjgsMTkuOC0xMDMuNCw1LjcNCgljLTIuMi0wLjgtNi4yLTEuNy03LjMtMy43YzIuMS04LDUuMS04Mi4zLDEuMS0xMDEuNmMtMS45LDIuOC0zLjMsNi4xLTUuNiw4LjZjMCwwLTIwLjQsMS43LTM0LjUtMTMuMmMwLDAsOS40LTI0LjUsMTIuNy0zMS40DQoJYzEuNS01LDMuOC05LjksNi41LTE0LjJjNS04LDExLjktMTEuMiwyMC44LTEzLjRDOTUuOSw0MS41LDk4LjgsMzYsMTA2LjEsMzNjMi41LDMuNiwxMS44LDYsMTcuOSw2LjZjMTQuMSwxLjQsMjYuMi03LjEsMjYuNS02LjkNCgljMi4yLDEuNyw2LjEsNC4zLDguNSw1LjVjMTAuNCw1LDIyLjQsNS40LDMyLjYsMTAuOWMwLDAsMTMuNywzLjQsMjEuNywzMS44bDExLDI4LjFDMjI0LjUsMTA5LDIxMi41LDEyNC41LDE4Ny43LDEyMS42eiIvPg0KPHBhdGggZmlsbD0iI0M2RDhFMSIgZD0iTTYxLjIsNTAuNmwtMy44LDEuM2wwLjMsMC45YzAuMSwwLjQsMTEuNywzOS45LDEwLjUsNjMuMmwtMC4xLDFsNCwwLjJsMC4xLTFDNzMuNCw5Miw2MS42LDUyLDYxLjUsNTEuNg0KCUw2MS4yLDUwLjZ6Ii8+DQo8cGF0aCBmaWxsPSIjQzZEOEUxIiBkPSJNMTk4LDQ4LjhsLTMuOC0xLjRsLTAuMywxYy0wLjUsMS43LTEzLjEsNDIuNS0xMi44LDYzLjZ2MWw0LTAuMXYtMWMtMC4zLTIwLjUsMTIuNS02MS45LDEyLjYtNjIuM0wxOTgsNDguOA0KCXoiLz4NCjxwYXRoIGZpbGw9IiNDNkQ4RTEiIGQ9Ik0xNTQuNCwzNS4zYy0wLjEsMC4yLTYuNywxNy42LTMxLjksMTYuN2MtMTUtMS4yLTIwLjktMTAuNi0yMi4xLTE2bC0wLjItMWwtNCwwLjhsMC4yLDENCgljMS40LDYuNSw4LjMsMTcuOCwyNS44LDE5LjJjMC40LDAsMC45LDAsMS4zLDBsMCwwYzAuMiwwLDAuNCwwLDAuNiwwYzIyLjcsMCwzMi40LTE0LjQsMzQtMTkuNWwwLjMtMWwtMy44LTEuMkwxNTQuNCwzNS4zeiIvPg0KPC9zdmc+DQo="><!--/product_image--><!--product_title-->
-                <h4 class="u-align-center u-product-control u-text u-text-1">
-                  <a class="u-product-title-link" href="#"><!--product_title_content-->Product 1 Title<!--/product_title_content--></a>
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
+                <img alt="" class="u-expanded-width u-image u-image-default u-product-control u-image-1" src="{{ asset("/img-product/$item->image") }}">
+                <h4 class="u-align-center u-product-control u-text u-text-1 hidden">
+                  <a class="u-product-title-link" href="#">{{$item->product_name}}</a>
                 </h4><!--/product_title--><!--product_price-->
                 <div class="u-product-control u-product-price u-product-price-1">
-                  <div class="u-price-wrapper u-spacing-10"><!--product_old_price-->
-                    <div class="u-hide-price u-old-price"><!--product_old_price_content-->$12<!--/product_old_price_content--></div><!--/product_old_price--><!--product_regular_price-->
-                    <div class="u-price u-text-palette-2-base" style="font-size: 1.25rem; font-weight: 700;"><!--product_regular_price_content-->$9.95<!--/product_regular_price_content--></div><!--/product_regular_price-->
+                  <div class="u-price-wrapper u-spacing-10">
+                  @if ($item->sale == null)
+                    <div class="u-hide-price u-old-price" style="text-decoration: line-through !important;"><!--product_old_price_content-->${{$item->sale}}<!--/product_old_price_content--></div><!--/product_old_price--><!--product_regular_price-->
+                  @else
+                    <div class="u-old-price" style="text-decoration: line-through !important;"><!--product_old_price_content-->${{$item->sale}}<!--/product_old_price_content--></div><!--/product_old_price--><!--product_regular_price-->
+                  @endif
+                    <div class="u-price" style="font-size: 1.5rem; font-weight: 700;"><!--product_regular_price_content-->${{$item->product_price}}<!--/product_regular_price_content--></div><!--/product_regular_price-->
                   </div>
                 </div><!--/product_price--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart","content":""}--><!--/options_json-->
                 <a href="" class="u-border-2 u-border-grey-25 u-btn u-btn-rectangle u-button-style u-none u-product-control u-text-body-color u-btn-1"><!--product_button_content-->Add to Cart<!--/product_button_content--></a><!--/product_button-->
               </div>
             </div><!--/product_item--><!--product_item-->
-            <div class="u-align-center u-container-style u-products-item u-repeater-item">
-              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2"><!--product_image-->
-                <img alt="" class="u-expanded-width u-image u-image-default u-product-control u-image-2" src="data:image/svg+xml;base64,DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9Im1hbiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIyNTZweCIgaGVpZ2h0PSIyNTZweCIgdmlld0JveD0iMCAwIDI1NiAyNTYiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI1NiAyNTYiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHJlY3QgZmlsbD0iI0M2RDhFMSIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiLz4NCjxwYXRoIGZpbGw9IiM3Rjk2QTYiIGQ9Ik0yMDguNiwxMzFjMC42LDAuMiwxLjIsMC4zLDEuOSwwLjNjMi41LDAsNC43LTEuNCw1LjYtMy42YzEtMi44LTAuNi01LjgtMy43LTYuN2wtMjYuMi03LjhsMTYuNy0xNS4xDQoJYzIuMy0yLjEsMi4zLTUuNCwwLTcuNXMtNi0yLjEtOC4zLDBsLTEzLjcsMTIuM0MxNzkuNyw4My41LDE2Miw2OCwxNDAuMSw2OGgtMjQuMmMtMjIuNiwwLTQxLDE2LjYtNDEsMzYuOXYxNS44aDk5LjRMMjA4LjYsMTMxeg0KCSBNMjMwLDE2NC41bC0zNi45LTMzLjJINzAuM2wtMzYuOSwzMy4yYy0xLjcsMS41LTIuMiwzLjgtMS4zLDUuN2MwLjksMiwzLDMuMyw1LjQsMy4zaDM2LjhjMTMuOCwwLDI3LjIsMi4zLDM5LjgsNi45DQoJYzE0LjEsNS4xLDI5LjgsNy42LDQ0LjgsNy42YzEyLjcsMCwyNS41LTEuOCwzNy43LTUuNWwzMS4xLTkuM2MxLjktMC42LDMuNC0yLDMuOS0zLjhDMjMyLDE2Ny42LDIzMS40LDE2NS44LDIzMCwxNjQuNXoiLz4NCjwvc3ZnPg0K"><!--/product_image--><!--product_title-->
-                <h4 class="u-align-center u-product-control u-text u-text-2">
-                  <a class="u-product-title-link" href="#"><!--product_title_content-->Product 2 Title<!--/product_title_content--></a>
-                </h4><!--/product_title--><!--product_price-->
-                <div class="u-product-control u-product-price u-product-price-2">
-                  <div class="u-price-wrapper u-spacing-10"><!--product_old_price-->
-                    <div class="u-hide-price u-old-price"><!--product_old_price_content-->$12<!--/product_old_price_content--></div><!--/product_old_price--><!--product_regular_price-->
-                    <div class="u-price u-text-palette-2-base" style="font-size: 1.25rem; font-weight: 700;"><!--product_regular_price_content-->$9.95<!--/product_regular_price_content--></div><!--/product_regular_price-->
-                  </div>
-                </div><!--/product_price--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart","content":""}--><!--/options_json-->
-                <a href="" class="u-border-2 u-border-grey-25 u-btn u-btn-rectangle u-button-style u-none u-product-control u-text-body-color u-btn-2"><!--product_button_content-->Add to Cart<!--/product_button_content--></a><!--/product_button-->
-              </div>
-            </div><!--/product_item--><!--product_item-->
-            <div class="u-align-center u-container-style u-products-item u-repeater-item">
-              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3"><!--product_image-->
-                <img alt="" class="u-expanded-width u-image u-image-default u-product-control u-image-3" src="data:image/svg+xml;base64,DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9Im1hbiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIyNTZweCIgaGVpZ2h0PSIyNTZweCIgdmlld0JveD0iMCAwIDI1NiAyNTYiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI1NiAyNTYiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHJlY3QgZmlsbD0iI0M2RDhFMSIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiLz4NCjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjN0Y5NkE2IiBkPSJNMTkyLjcsNTRjMCwwLDUuMywwLjMsMTMuMiw5LjJjNy45LDguOSwxNC4zLDE5LDE1LjgsMjUuOA0KCWMxLjUsNi44LDIsMTMuNiwwLjMsMTcuNWMtMS44LDMuOS0xMS40LDM0LjQtMTEuNyw0My45Yy0wLjMsOS41LTIuNiw1My0yLjYsNTNoLTEwLjVsLTIuMS01Ny43YzAsMC0wLjMtMTAuNy0zLjgtMTAuNw0KCWMtMy41LDAtMTYuNyw0LjQtMjguOSwyN0MxNTAsMTg0LjUsMTQzLDE5Ny41LDEzNiwyMDAuOGMtNywzLjMtNTcuMyw0LjItNzEsMi4xYy0xMy43LTIuMS0zMS4zLTkuNS0zMS4zLTkuNXMtMy44LTcuMSw3LTEwLjENCgljMTAuOC0zLDQxLjgtMTMsNDguMi0xNi45YzMuNy0yLjIsMjksNi45LDM4LjktNS4xYzkuMS0xMS4xLDM3LjMtNzEsNDUuNi04Mi45QzE4My40LDY0LjEsMTkwLjgsNTQsMTkyLjcsNTR6Ii8+DQo8L3N2Zz4NCg=="><!--/product_image--><!--product_title-->
-                <h4 class="u-align-center u-product-control u-text u-text-3">
-                  <a class="u-product-title-link" href="#"><!--product_title_content-->Product 3 Title<!--/product_title_content--></a>
-                </h4><!--/product_title--><!--product_price-->
-                <div class="u-product-control u-product-price u-product-price-3">
-                  <div class="u-price-wrapper u-spacing-10"><!--product_old_price-->
-                    <div class="u-hide-price u-old-price"><!--product_old_price_content-->$12<!--/product_old_price_content--></div><!--/product_old_price--><!--product_regular_price-->
-                    <div class="u-price u-text-palette-2-base" style="font-size: 1.25rem; font-weight: 700;"><!--product_regular_price_content-->$9.95<!--/product_regular_price_content--></div><!--/product_regular_price-->
-                  </div>
-                </div><!--/product_price--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart","content":""}--><!--/options_json-->
-                <a href="" class="u-border-2 u-border-grey-25 u-btn u-btn-rectangle u-button-style u-none u-product-control u-text-body-color u-btn-3"><!--product_button_content-->Add to Cart<!--/product_button_content--></a><!--/product_button-->
-              </div>
-            </div><!--/product_item--><!--product_item-->
-            <div class="u-align-center u-container-style u-products-item u-repeater-item">
-              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-4"><!--product_image-->
-                <img alt="" class="u-expanded-width u-image u-image-default u-product-control u-image-4" src="data:image/svg+xml;base64,DQoNCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0ibWFuIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjI1NnB4IiBoZWlnaHQ9IjI1NnB4IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjU2IDI1NiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8cmVjdCBmaWxsPSIjQzZEOEUxIiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIvPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGZpbGw9IiM3Rjk2QTYiIGQ9Ik01MS44LDEyOC40YzMuNC0xMS41LDkuNC0yMS45LDE3LjUtMjkuOWwxMS40LTExLjN2LTQuN2MwLTIuOSwyLjEtNS4zLDQuNy01LjNjMi42LDAsNC43LDIuMyw0LjcsNS4zdjQuNw0KCQkJbDExLjQsMTEuM2M4LjIsOCwxNC4yLDE4LjQsMTcuNSwyOS45bDMuNC0yNy44YzEuNC0xMi4xLTEuOC0yNC4yLTguOS0zMy40Yy03LjEtOS4yLTE3LjQtMTQuNC0yOC4yLTE0LjRTNjQuNSw1OCw1Ny40LDY3LjINCgkJCWMtNy4xLDkuMi0xMC41LDIxLjMtOSwzMy40TDUxLjgsMTI4LjR6Ii8+DQoJCTxwYXRoIGZpbGw9IiM3Rjk2QTYiIGQ9Ik0xMTAuNSwxMzIuOWMtMi43LTEwLjMtNy45LTE5LjQtMTUuMS0yNi41bC05LjktOS44bC05LjksOS44Yy03LjIsNy0xMi40LDE2LjItMTUuMSwyNi41bC01LjgsMjEuOA0KCQkJYzAuNywxMCwxLjEsMjAsMS4xLDI5LjljMCwxOC40LDEzLjMsMzMuNCwyOS43LDMzLjRzMjkuNy0xNC45LDI5LjctMzMuNGMwLTEwLDAuNC0yMCwxLjEtMjkuOUwxMTAuNSwxMzIuOXoiLz4NCgk8L2c+DQoJPGc+DQoJCTxwYXRoIGZpbGw9IiM3Rjk2QTYiIGQ9Ik0yMDQuNCwxMjcuNmMtMy40LDExLjUtOS40LDIxLjktMTcuNSwyOS45bC0xMS40LDExLjN2NC43YzAsMi45LTIuMSw1LjMtNC43LDUuM2MtMi42LDAtNC43LTIuMy00LjctNS4zDQoJCQl2LTQuN2wtMTEuNC0xMS4zYy04LjItOC0xNC4yLTE4LjQtMTcuNS0yOS45bC0zLjQsMjcuOGMtMS40LDEyLjEsMS44LDI0LjIsOC45LDMzLjRjNy4xLDkuMiwxNy40LDE0LjQsMjguMiwxNC40DQoJCQlzMjEuMS01LjIsMjguMi0xNC40YzcuMS05LjIsMTAuMy0yMS4zLDguOS0zMy40TDIwNC40LDEyNy42eiIvPg0KCQk8cGF0aCBmaWxsPSIjN0Y5NkE2IiBkPSJNMTQ1LjcsMTIzLjFjMi43LDEwLjMsNy45LDE5LjQsMTUuMSwyNi41bDkuOSw5LjhsOS45LTkuOGM3LjItNywxMi40LTE2LjIsMTUuMS0yNi41bDUuOC0yMS44DQoJCQljLTAuNy0xMC0xLjEtMjAtMS4xLTI5LjljMC0xOC41LTEzLjMtMzMuNC0yOS43LTMzLjRTMTQxLDUyLjksMTQxLDcxLjRjMCwxMC0wLjQsMjAtMS4xLDI5LjlMMTQ1LjcsMTIzLjF6Ii8+DQoJPC9nPg0KPC9nPg0KPC9zdmc+DQo="><!--/product_image--><!--product_title-->
-                <h4 class="u-align-center u-product-control u-text u-text-4">
-                  <a class="u-product-title-link" href="#"><!--product_title_content-->Product 3 Title<!--/product_title_content--></a>
-                </h4><!--/product_title--><!--product_price-->
-                <div class="u-product-control u-product-price u-product-price-4">
-                  <div class="u-price-wrapper u-spacing-10"><!--product_old_price-->
-                    <div class="u-hide-price u-old-price"><!--product_old_price_content-->$12<!--/product_old_price_content--></div><!--/product_old_price--><!--product_regular_price-->
-                    <div class="u-price u-text-palette-2-base" style="font-size: 1.25rem; font-weight: 700;"><!--product_regular_price_content-->$9.95<!--/product_regular_price_content--></div><!--/product_regular_price-->
-                  </div>
-                </div><!--/product_price--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart","content":""}--><!--/options_json-->
-                <a href="" class="u-border-2 u-border-grey-25 u-btn u-btn-rectangle u-button-style u-none u-product-control u-text-body-color u-btn-4"><!--product_button_content-->Add to Cart<!--/product_button_content--></a><!--/product_button-->
-              </div>
-            </div><!--/product_item-->
+            @endforeach
           </div>
         </div><!--/products-->
       </div>

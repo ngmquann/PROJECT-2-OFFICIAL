@@ -15,9 +15,20 @@ class ProductDetailController extends Controller
 
         $filter = DB::table("products")
         ->join('tb1_brand_product','tb1_brand_product.brand_id','=','products.brand_id')
-        ->where('brand_status', 1)
         ->where('product_id', $product_id)
         ->get();
-        return view('product_detail')->with(['filter'=>$filter])->with(['datas_cate'=>$categorys])->with(['datas_categ'=>$category])->with(['brand'=>$brand]);
+
+        foreach($filter as $iteam){
+            $brand_name = $iteam->brand_name;
+        }
+        
+        $relate = DB::table("products")
+        ->join('tb1_brand_product','tb1_brand_product.brand_id','=','products.brand_id')
+        ->where('brand_name', $brand_name)
+        ->whereNotIn('product_id', [$product_id])
+        ->get();
+
+        return view('product_detail')->with(['filter'=>$filter])->with(['datas_cate'=>$categorys])
+                ->with(['datas_categ'=>$category])->with(['brand'=>$brand])->with(['relate'=>$relate]);
     }
 }

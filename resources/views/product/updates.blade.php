@@ -21,7 +21,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Sale</label>
-                                <input type="text" value="{{$edit_p->sale}}" name="sale" class="form-control" id="sale" data-inputmask="'alias': 'currency'"/>
+                                <input type="text" value="{{$edit_p->sale}}" name="sale" class="form-control" id="sale">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Description</label>

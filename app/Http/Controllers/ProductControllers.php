@@ -139,8 +139,8 @@ class ProductControllers extends Controller
             $tmp = $sale;
             DB::table('products')->where('product_id',intval($id))->update(['category_id'=>$category_pr,
             'brand_id'=>$brand_pr,'product_name'=>$name_product, 
-            'product_price'=>intval($tmp),
-            'sale'=>intval($price_product),
+            'product_price'=>$tmp,
+            'sale'=>$price_product,
             'product_des'=>$des_product,
             'product_content'=>$content_product,
             'product_status'=>$status_product,
