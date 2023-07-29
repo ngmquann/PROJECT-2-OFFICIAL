@@ -39,7 +39,7 @@ h1 {
     outline: none;
     border: 0;
 }
-.alert {
+.errors {
     position: relative;
     z-index: 100;
     padding: 0 !important;

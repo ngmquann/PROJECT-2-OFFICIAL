@@ -60,7 +60,7 @@ Route::get('/model', [ProductController1::class, 'showProductHome']);
 
 
 //--profile user--//
-Route::get('/profile', [ProfileController::class, 'getProfile']);
+Route::get('/profile', [ProfileController::class, 'getProfile'])->name('profile');
 
 //--product admin--//
 Route::get('/admin_product',[ProductControllers::class,'index']);
@@ -91,6 +91,7 @@ Route::post('/register',[RegisterController::class,'register'])->name('register'
 //--user login--//
 Route::get('/login',[RegisterController::class,'showLogin'])->name('showLogin');
 Route::post('/login_user',[RegisterController::class,'login'])->name('login_user');
+Route::get('/logout',[RegisterController::class,'logout'])->name('logout');
 
 //--product detail--//
 Route::get('/product_detail/{product_id}',[ProductDetailController::class,'get']);

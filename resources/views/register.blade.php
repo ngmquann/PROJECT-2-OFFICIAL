@@ -27,7 +27,7 @@
         </div>
       </div>
       @if($errors->has('email'))
-          <span class="alert">
+          <span class="errors">
             {{$errors->first('email')}}
           </span>
         @endif
@@ -45,7 +45,7 @@
         </div>
       </div>
       @if($errors->has('password'))
-          <span class="alert">
+          <span class="errors">
             {{$errors->first('password')}}
           </span>
         @endif
@@ -65,7 +65,7 @@
         </div>
       </div>
       @if($errors->has('password_confirmation'))
-          <span class="alert">
+          <span class="errors">
             {{$errors->first('password_confirmation')}}
           </span>
         @endif
@@ -83,7 +83,7 @@
         </div>
       </div>
       @if($errors->has('customer_name'))
-          <span class="alert">
+          <span class="errors">
             {{$errors->first('customer_name')}}
           </span>
         @endif
@@ -101,7 +101,7 @@
         </div>
       </div>
       @if($errors->has('customer_phone'))
-          <span class="alert">
+          <span class="errors">
             {{$errors->first('customer_phone')}}
           </span>
         @endif

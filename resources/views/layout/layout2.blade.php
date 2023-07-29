@@ -90,8 +90,20 @@
           <li class="nav-item">
             <i class="fa-solid fa-cart-shopping"></i>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="btn btn-primary" href="{{url('login')}}" role="button">Login</a>
+          </li> -->
+          <li class="nav-item">
+            @if (session('user_name'))
+              <div style="display: flex;">
+                <a href="{{ route('profile') }}" class="nav-link">
+                  <i class="fa-solid fa-user"></i> {{ session('user_name') }}
+                </a>
+                  <a class="nav-link" href="{{ route('logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a>
+              </div>
+            @elseif(session('user_name') == null)
+                <a href="{{ route('showLogin') }}" class="btn btn-primary">Login</a>
+            @endif
           </li>
         </ul>
       </div>
