@@ -60,7 +60,9 @@ Route::get('/model', [ProductController1::class, 'showProductHome']);
 
 
 //--profile user--//
-Route::get('/profile', [ProfileController::class, 'getProfile'])->name('profile');
+Route::get('/profile/{customer_id}', [ProfileController::class, 'getProfile'])->name('profile');
+Route::post('/profile/{customer_id}/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
+Route::post('/profile/{customer_id}/change_pass', [ProfileController::class, 'changePass'])->name('changePass');
 
 //--product admin--//
 Route::get('/admin_product',[ProductControllers::class,'index']);

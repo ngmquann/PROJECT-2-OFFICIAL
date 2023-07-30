@@ -41,7 +41,7 @@ class RegisterController extends Controller
             if (!$user) {
                 $newUser = new User();
                 $newUser->email = $request->email;
-                $newUser->password = $request->password;
+                $newUser->password = bcrypt($request->password);
                 $newUser->customer_name = $request->customer_name;
                 $newUser->customer_phone = $request->customer_phone;
                 $newUser->save();
@@ -71,15 +71,12 @@ class RegisterController extends Controller
                     ->withInput();
         }
         
-        $user = Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password
-        ]);
-
-        if ($user) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
             $name = $user->customer_name;
+            $id = $user->customer_id;
             $request->session()->put('user_name', $name);
+            $request->session()->put('id', $id);
             return redirect()->route('home');
         } else {
             return back()->with('fail', 'Invalid login credentials.')->with('name', '');

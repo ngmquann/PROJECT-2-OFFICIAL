@@ -18,7 +18,29 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'users';
+    /**
+     * The primary key for the model.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'customer_id';
+    /**
+     * Set the password attribute with hashed value.
+     *
+     * @param  string  $password
+     * @return void
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
     protected $fillable = [
         'email',
         'password',
