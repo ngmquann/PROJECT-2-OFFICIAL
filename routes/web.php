@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ModelController;
@@ -97,3 +98,6 @@ Route::get('/logout',[RegisterController::class,'logout'])->name('logout');
 
 //--product detail--//
 Route::get('/product_detail/{product_id}',[ProductDetailController::class,'get']);
+
+//--Contact--//
+Route::get('/contact',[ContactController::class,'get']);
