@@ -11,7 +11,7 @@
                         <form role="form" action="{{ url('/save_brand') }}" method="POST">
                         {{csrf_field()}}
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Name Category</label>
+                                <label for="exampleInputEmail1">Name Brand</label>
                                 <input type="text" name="name_brand" class="form-control" id="exampleInputEmail1" placeholder="Name Category">
                             </div>
                             <div class="form-group">
@@ -19,6 +19,12 @@
                                 <textarea class="form-control" name="des_brand" id="exampleInputPassword1" placeholder="Description"></textarea>
                             </div>
                             <div class="form-group-status">
+                                <label for="exampleInputPassword1">Category</label>
+                                <select name="category_id" class="form-control input-lg m-bot15">
+                                    @foreach($datas_category as $categorys)
+                                    <option value="{{$categorys->category_id }}">{{$categorys->category_name}}</option>
+                                    @endforeach
+                                </select>
                                 <label for="exampleInputPassword1">Status</label>
                                 <select name="status_brand" class="form-control input-lg m-bot15">
                                     <option value="0">Hide</option>
@@ -90,6 +96,7 @@
                         </label>
                         </th>
                         <th>Name</th>
+                        <th>Category</th>
                         <th>Status</th>
                         <th>Date</th>
                         <th style="width:30px;"></th>
@@ -100,13 +107,13 @@
                     <tr>
                         <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
                         <td>{{$brand->brand_name}}</td>
+                        <td>{{$brand->category_name}}</td>
                         <td><span class="text-ellipsis">
                             
                         <?php
                         if($brand->brand_status==0)
                         {
                         ?>
-                            
                             <a href="{{url('/unactive_brandstatus/'.$brand->brand_id)}}"><span class="hides">Hide</span></a>
                         <?php
                         }

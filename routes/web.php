@@ -27,6 +27,7 @@ use App\Http\Controllers\NewsController;
 */
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+
 //--admin--//
 Route::get('/test', [testcontroller::class, 'test']);
 
