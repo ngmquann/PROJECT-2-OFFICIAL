@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/nicepage.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('frontend/css/Page-2.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('frontend/css/frontend.css') }}" media="screen">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="{{asset('css/home.css') }}"> -->
     <!-- <link rel="stylesheet" href="{{ asset('css/editbackend.css') }}"> -->
     <script class="u-script" type="text/javascript" src="{{ asset('frontend/js/jquery.js') }}" defer=""></script>
@@ -34,24 +36,47 @@
   <header class="u-clearfix u-header" id="sec-a76a">
       <div class="u-clearfix u-sheet u-sheet-1">
     <!-- header -->
-      <a href="{{ asset('images/logo-gundam.png') }}" class="u-image u-logo u-image-1">
+    <a href="{{url('/home')}}" class="u-image u-logo u-image-1">
           <img src="{{ asset('images/logo-gundam.png') }}" class="u-logo-image u-logo-image-1">
         </a>
-        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
-          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1 nav-menu">
+        
+          <ul id="main-menu">
+            <li><a href="{{url('/home')}}">Home</a></li>
+            @foreach($datas_cate as $cate_home)
+            <li><a href="{{url('/home')}}">{{$cate_home->category_name}}</a>
+              <ul class="sub-menu">
+              @foreach($brand as $brand_menu)
+                @if ($cate_home->category_id == $brand_menu->category_id)
+                <li><a href="">{{$brand_menu->brand_name}}</a></li>
+                @endif
+                <!-- <li><a href="">home 2</a></li>
+                <li><a href="">home 3</a></li>
+                <li><a href="">home 4</a></li> -->
+              @endforeach
+              </ul>
+              
+            </li>
+            @endforeach
+            <!-- <li><a href="{{url('/home')}}">Home</a></li>
+            <li><a href="{{url('/home')}}">Home</a></li>
+            <li><a href="{{url('/home')}}">Home</a></li> -->
+          </ul>
+          <!-- <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
             <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
               <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
               <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect></g></svg>
             </a>
-          </div>
-          <div class="u-custom-menu u-nav-container">
+          </div> -->
+          <!-- <div class="u-custom-menu u-nav-container">
             <ul class="u-nav u-unstyled u-nav-1 category-cha">
-            <li class="u-nav-item active">
-              <a class="u-button-style u-nav-link " href="{{url('/')}}" >Home</a>
-            </li>
+              <a href="">
+            <li class="u-nav-item">
+              <a class="u-button-style u-nav-link " href="{{url('/home')}}">Home</a>
+            </li></a>
             @foreach($datas_cate as $cate_home)
             <li class="u-nav-item category-menu">
-              <a class="u-button-style u-nav-link " href="#" >{{$cate_home->category_name}}</a>
+              <a class="u-button-style u-nav-link" href="{{url('/home')}}">{{$cate_home->category_name}}</a>
               <ul class="dropdown-menu category-menucon">
               @foreach($brand as $brand_menu)
                 @if ($cate_home->category_id == $brand_menu->category_id)
@@ -61,7 +86,7 @@
               </ul>
             </li>
             @endforeach
-            <!--
+          
             <li class="u-nav-item">
               <a class="u-button-style u-nav-link " href="#" >Page 1</a>
             </li>
@@ -69,7 +94,7 @@
               <a class="u-button-style u-nav-link " href="#" >Page 2</a>
             </li> -->
             
-          <div class="u-custom-menu u-nav-container-collapse">
+          <!-- <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
@@ -84,7 +109,7 @@
               </div>
             </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-          </div>
+          </div>  -->
         </nav>
     <!-- end header -->
     </div>
@@ -107,5 +132,5 @@
         <span>Website Builder Software</span>
       </a>. 
     </section>
-  
+
 </body></html>

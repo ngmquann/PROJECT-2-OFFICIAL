@@ -25,9 +25,10 @@ use App\Http\Controllers\NewsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//--Frontend--//
 Route::get('/', [HomeController::class, 'home'])->name('home');
-
+Route::get('/home', [HomeController::class, 'home']);
+Route::get('/news', [HomeController::class, 'news']);
 //--admin--//
 Route::get('/test', [testcontroller::class, 'test']);
 

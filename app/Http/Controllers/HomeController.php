@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    public function homepage(){
+        return view('frontend_layout');
+    }
     public function home(){
         $categorys = DB::table('tb1_category_product')->where('category_status','1')->get();
         $category = DB::table('tb1_category_product')->where('category_status','1')->whereNotIn('category_id', [1])->get();
@@ -26,5 +29,17 @@ class HomeController extends Controller
             'news_gundam'=>$news
         ];
         return view('frontend.home',$data_home);
+    }
+    public function news(){
+        $categorys = DB::table('tb1_category_product')->where('category_status','1')->get();
+        $category = DB::table('tb1_category_product')->where('category_status','1')->whereNotIn('category_id', [1])->get();
+        $brand = DB::table('tb1_brand_product')->where('brand_status','1')->get();
+        $news = DB::table('news_gundam')->where('news_status','1')->take(4)->get();
+        $data_news=[
+            'datas_cate'=>$categorys,
+            'brand'=>$brand,
+            'news_gundam'=>$news
+        ];
+        return view('frontend.news',$data_news);
     }
 }
