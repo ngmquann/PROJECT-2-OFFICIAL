@@ -22,7 +22,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Content</label>
-                                <textarea class="form-control" name="news_content" id="ckeditor" placeholder="Content"></textarea>
+                                <textarea name="news_content" id="myeditorinstance" placeholder="Content"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Image</label>
