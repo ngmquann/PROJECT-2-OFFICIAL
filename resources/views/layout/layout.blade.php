@@ -64,6 +64,10 @@
         <!-- AdminLTE for demo purposes -->
         <!-- <script src="{{ asset('dist/js/demo.js') }}"></script> -->
         <!-- page script -->
+        <script src="{{asset('backend/ckeditor/ckeditor.js')}}"></script>
+        <script>
+            CKEDITOR.replace('ckeditor');
+        </script>
         <script src="{{asset('backend/js/bootstrap.js')}}"></script>
         <script src="{{asset('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
         <script src="{{asset('backend/js/scripts.js')}}"></script>

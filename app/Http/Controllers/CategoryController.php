@@ -67,4 +67,9 @@ class CategoryController extends Controller
         $p = DB::table('tb1_category_product')->where('category_id', intval($id_category))->update(['category_name' => $name_category, 'category_des' => $des_category, 'category_status' => intval($status_category)]);
         return redirect()->action([CategoryController::class, "create_category"]);
     }
+    //end fuction admin category
+    // public function show_category($category_id)
+    // {
+
+    // }
 } 
