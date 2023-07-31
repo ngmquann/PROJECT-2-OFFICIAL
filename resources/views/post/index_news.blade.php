@@ -32,7 +32,7 @@
                             <thead>
                                 <tr>
                                     <th>News Id</th>
-                                    <th>Category</th>
+                                    {{-- <th>Tag</th> --}}
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Image</th>
@@ -44,11 +44,11 @@
                                 @foreach($news_pr as $p)
                                     <tr>
                                         <td>{{ $p->news_id}}</td>
-                                        <td>{{ $p->category_id}}</td>
+                                        {{-- <td>{{ $p->category_id}}</td> --}}
                                         <td>{{ $p->news_titles}}</td>
                                         <td>{{ $p->news_des}}</td>
                                         <td><img width="100px" src="{{ url("/images/{$p->news_images}")}}"/></td>
-                                        <td> 
+                                        <td>
                                             <?php
                                             if($p->news_status==0)
                                             {
@@ -75,7 +75,7 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot>
+                            {{-- <tfoot>
                                 <tr>
                                     <th>Product Id</th>
                                     <th>Category</th>
@@ -86,7 +86,7 @@
                                     <th>Status</th>
                                     <th></th>
                                 </tr>
-                            </tfoot>
+                            </tfoot> --}}
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -100,7 +100,7 @@
     @endsection
     @section('script-section')
     <script>
-        $(document).ready(function() 
+        $(document).ready(function()
         {
             $('#product').DataTable({
                 paging: true,

@@ -13,129 +13,152 @@ class NewsController extends Controller
 {
     public function index()
     {
-        // $category=DB::table('tb1_category_product')->where('category_status', 1)->orderBy('category_id','desc')->get();
-        $news=DB::table('news_gundam')
-        ->join('tb1_category_product','tb1_category_product.category_id','=','news_gundam.category_id')
-        ->where('category_status', 1)
-        ->orderBy('news_gundam.news_id', 'desc')->get();
-        // $product=DB::table('products')->get();
-        return view('post.index_news')->with(['news_pr'=>$news]);
+        $news = DB::table('news_gundam')->orderBy('news_id', 'desc')->get();
+        return view('post.index_news')->with(['news_pr' => $news]);
     }
-    public function create() 
+    public function create()
     {
-        $category=DB::table('tb1_category_product')->where('category_status', 1)->orderBy('category_id','desc')->get();
-        $news=DB::table('news_gundam')->orderBy('news_id','desc')->get();
-        $news_cate=[
-            'cate'=>$category,
-            'new'=>$news
-        ];
-        return view('post.create_news',$news_cate);
+        //categories
+        $categories = DB::table('news_tag')->get();
+        return view('post.create_news')
+            ->with('categories', $categories);
+        // return view('post.create_news',$news_cate);
     }
     public function unactive_news($news_id)
     {
-        DB::table('news_gundam')->where('news_id',$news_id)->update(['news_status'=>1]);
-        Session::put('message_status','Success');
+        DB::table('news_gundam')->where('news_id', $news_id)->update(['news_status' => 1]);
+        Session::put('message_status', 'Success');
         return Redirect('admin_news');
     }
     public function active_news($news_id)
     {
-        DB::table('news_gundam')->where('news_id',$news_id)->update(['news_status'=>0]);
-        Session::put('message_status','Success');
+        DB::table('news_gundam')->where('news_id', $news_id)->update(['news_status' => 0]);
+        Session::put('message_status', 'Success');
         return Redirect('admin_news');
     }
-    public function delete($id) 
-        {
-            $p = DB::table('news_gundam')
+    public function delete($id)
+    {
+        $p = DB::table('news_gundam')
             ->where('news_id', intval($id))
             ->delete();
-            return redirect()->action([NewsController::class,"index"]);
-        }
-    public function edit_news($id) 
+        return redirect()->action([NewsController::class, "index"]);
+    }
+    public function edit_news($id)
     {
-        // $p = DB::table('products')->where('product_id', intval($id))->first();
-        $news=DB::table('news_gundam')
-        // ->join('tb1_category_product','tb1_category_product.category_id','=','products.category_id')
-        // ->join('tb1_brand_product','tb1_brand_product.brand_id','=','products.brand_id')
-        ->where('news_id', intval($id))
-        ->get();
-        $category=DB::table('tb1_category_product')
-        ->where('category_status',1)
-        ->get();
+        $categories = DB::table('news_tag')->get();
+        $selected_tag = array_column(DB::table('news_gundam_tags')->where('news_id', $id)->select('tag_id')->get()->all(), 'tag_id');
+
+        $news = DB::table('news_gundam')->where('news_id', intval($id))->first();
+
         $data = [
-            'edit_news' => $news,
-            'category'=>$category
+            'edit_p' => $news,
+            'categories' => $categories,
+            'selected_tag' => $selected_tag
         ];
 
-        
-        return view('post.update_news',$data);
+
+        return view('post.update_news', $data);
     }
-    public function postCreate(Request $request) 
+    public function postCreate(Request $request)
     {
         // nhận tất cả tham số vào mảng product
         $data_news = $request->all();
         // xử lý upload hình vào thư mục
-        $get_image=$request->file('image');
-        if($get_image)
-        {
+        $get_image = $request->file('image');
+        if ($get_image) {
 
             $extension = $get_image->getClientOriginalExtension();
-            if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
-            {
-                return Redirect('create_news')->with('Error','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
+            if ($extension != 'jpg' && $extension != 'png' && $extension != 'jpeg') {
+                return Redirect('create_news')->with('Error', 'Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
             }
             $imageName = $get_image->getClientOriginalName();
-            $get_image->move('news_images',$imageName);
-            $data_news['news_images']=$imageName;
-        }
-        else
-        {
+            $get_image->move('news_images', $imageName);
+            $data_news['news_images'] = $imageName;
+        } else {
             $imageName = null;
         }
-            DB::table('news_gundam')->insert(['category_id'=>$data_news['category_pr'],
-            'news_titles'=>$data_news['name_news'], 
-            'news_des'=>$data_news['des_new'],
-            'news_content'=>$data_news['content_news'],
-            'news_status'=>$data_news['status_news'],
-            'news_images'=>$imageName]);
-            return redirect()->action([NewsController::class, "index"]);
+        $news_gundam = DB::table('news_gundam')
+            ->insertGetId([
+                'news_titles' => $data_news['news_titles'],
+                'news_des' => $data_news['news_des'],
+                'news_content' => $data_news['news_content'],
+                'news_status' => $data_news['news_status'],
+                'news_images' => $imageName,
+            ]);
+
+        $tags = $data_news['category_id'];
+
+        foreach ($tags as $tag) {
+            DB::table('news_gundam_tags')
+                ->insert(([
+                    'news_id' => $news_gundam,
+                    'tag_id' => $tag
+                ]));
+        }
+
+        return redirect()->action([NewsController::class, "index"]);
     }
-    public function postCreateUpdate(Request $request, $id) 
+    public function postCreateUpdate(Request $request, $id)
     {
         // nhận tất cả tham số vào mảng product
         $title_news = $request->input('name_news');
         $news_des = $request->input('des_new');
         $news_content = $request->input('content_news');
         $news_status = $request->input('news_status');
-        $category_pr=$request->input('category_pr');
-        $get_image=$request->file('image');
-        if($get_image)
-        {
+        $category_pr = $request->input('category_pr');
+        $get_image = $request->file('image');
+        if ($get_image) {
 
             $extension = $get_image->getClientOriginalExtension();
-            if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
-            {
-                return Redirect('create_news')->with('Error','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
+            if ($extension != 'jpg' && $extension != 'png' && $extension != 'jpeg') {
+                return Redirect('create_news')->with('Error', 'Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
             }
             $imageName = $get_image->getClientOriginalName();
-            $get_image->move('news_images',$imageName);
-           
-        }
-        else
-        {
+            $get_image->move('news_images', $imageName);
+
+        } else {
             //nếu có hình sẽ giữ lại hình củ
             $p = DB::table('news_gundam')
-            ->where('news_id', intval($id))
-            ->first();
+                ->where('news_id', intval($id))
+                ->first();
             $imageName = $p->news_images;
             //
         }
-            DB::table('news_gundam')->where('news_id',intval($id))->update(['category_id'=>$category_pr,
-            'news_titles'=>$title_news,
-            'news_des'=>$news_des,
-            'news_content'=>$news_content,
-            'news_status'=>$news_status,
-            'news_images'=>$imageName]);
-            return redirect()->action([NewsController::class, "index"]);
+        DB::table('news_gundam')->where('news_id', intval($id))->update([
+            'category_id' => $category_pr,
+            'news_titles' => $title_news,
+            'news_des' => $news_des,
+            'news_content' => $news_content,
+            'news_status' => $news_status,
+            'news_images' => $imageName
+        ]);
+        return redirect()->action([NewsController::class, "index"]);
     }
-        
+
+    public function news_tags()
+    {
+        $tags = DB::table('news_tag')->orderBy('tag_name', 'desc')->get();
+        return view('post.list_tags')
+            ->with('tags', $tags);
+    }
+    public function save_tag(Request $request)
+    {
+        $tag = $request->all();
+
+        DB::table('news_tag')
+            ->insert([
+                'tag_name' => $tag['tag_name'],
+            ]);
+        // Session::put('notification','Successful Data Entry');
+        return Redirect('/news/tags');
+
+    }
+    public function delete_tag($tag_id)
+    {
+        $p = DB::table('news_tag')
+            ->where('tag_id', intval($tag_id))
+            ->delete();
+        return redirect('/news/tags');
+    }
+
 }
