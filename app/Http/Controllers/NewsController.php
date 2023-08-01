@@ -101,11 +101,8 @@ class NewsController extends Controller
     public function postCreateUpdate(Request $request, $id)
     {
         // nhận tất cả tham số vào mảng product
-        $title_news = $request->input('name_news');
-        $news_des = $request->input('des_new');
-        $news_content = $request->input('content_news');
-        $news_status = $request->input('news_status');
-        $category_pr = $request->input('category_pr');
+        $data_news = $request->all();
+
         $get_image = $request->file('image');
         if ($get_image) {
 
@@ -124,14 +121,27 @@ class NewsController extends Controller
             $imageName = $p->news_images;
             //
         }
+        // dd($imageName);
         DB::table('news_gundam')->where('news_id', intval($id))->update([
-            'category_id' => $category_pr,
-            'news_titles' => $title_news,
-            'news_des' => $news_des,
-            'news_content' => $news_content,
-            'news_status' => $news_status,
-            'news_images' => $imageName
+            'news_titles' => $data_news['news_titles'],
+            'news_des' => $data_news['news_des'],
+            'news_content' => $data_news['news_content'],
+            'news_status' => $data_news['news_status'],
+            'news_images' => $imageName,
         ]);
+
+        $deleted = DB::table('news_gundam_tags')->where('news_id', $id)->delete();
+
+        $tags = $data_news['category_id'];
+
+        foreach ($tags as $tag) {
+            DB::table('news_gundam_tags')
+                ->insert(([
+                    'news_id' => $id,
+                    'tag_id' => $tag
+                ]));
+        }
+
         return redirect()->action([NewsController::class, "index"]);
     }
 

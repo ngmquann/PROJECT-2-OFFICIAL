@@ -1,13 +1,13 @@
 @extends('layout.layout')
 @section('content')
-    <div class="row">
+    <div class="row d-flex justify-content-center">
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
                     Create News
                 </header>
-                <div class="panel-body">
-                    <div class="position-center">
+                <div class="panel-body pt-4 pb-4">
+                    <div class="position-center shadow p-4">
                         <form role="form" action="{{ url('/news/postCreate') }}" method="POST"
                             enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -22,7 +22,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Content</label>
-                                <textarea name="news_content" id="myeditorinstance" placeholder="Content"></textarea>
+                                <textarea class="form-control" name="news_content" id="myeditorinstance" placeholder="Content"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Image</label>
