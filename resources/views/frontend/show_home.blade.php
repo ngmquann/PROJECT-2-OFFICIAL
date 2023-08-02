@@ -57,19 +57,18 @@
         <h2 class="u-text u-text-default u-text-1">Product News</h2>
         <div class="u-expanded-width u-gallery u-layout-horizontal u-lightbox u-no-transition u-show-text-on-hover u-width-fixed u-gallery-1">
           <div class="u-gallery-inner">
-          @foreach($producthome as $pro_new)
-          
-          <div class="u-effect-fade u-gallery-item u-gallery-item-1 card">
+          @foreach($producthome as $pro_new)     
           <a href="{{url('/product_detail/'.$pro_new->product_id)}}">
+          <div class="u-effect-fade u-gallery-item u-gallery-item-1 card">
             <div class="u-back-slide effectslide">
-                <img class="" src="{{asset("/images/$pro_new->image")}}">
+            <img class="u-back-image u-back-image-1" src="{{asset("/images/$pro_new->image")}}">
             </div>
               <div class="u-over-slide u-shading u-valign-bottom u-over-slide-1 edit">
                 <h2 class="title-product">{{$pro_new->product_name}}</h2>
                   <p class="price-product"><span>Price: </span><span class="edit-price">{{$pro_new->product_price}}$</span></p>
               </div>
-              </a>
           </div>
+          </a>
           @endforeach 
         </div>
           <a class="u-absolute-vcenter u-gallery-nav u-gallery-nav-prev u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-gallery-nav-1" href="#" role="button">
