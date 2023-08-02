@@ -84,13 +84,13 @@
                     <img class="card-img-top" src="{{ asset("/img-product/$item->image") }}" alt="" />
                     <div class="card-body">
                       <p class="h6"><small class="text-muted filter-brand">{{$item->brand_name}}</small></br>{{$item->product_name}}</p>
-                      <p class="m-0">
+                      <!-- <p class="m-0">
                         <i class="fa-xs far fa-star"></i>
                         <i class="fa-xs far fa-star"></i>
                         <i class="fa-xs far fa-star"></i>
                         <i class="fa-xs far fa-star"></i>
                         <i class="fa-xs far fa-star"></i>
-                      </p>
+                      </p> -->
                       <p class="h5 m-0">${{$item->product_price}}
                         @if ($item->sale == null)
                         <s class="lead text-muted" hidden>${{$item->sale}}</s>

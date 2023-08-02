@@ -67,4 +67,42 @@ class CategoryController extends Controller
         $p = DB::table('tb1_category_product')->where('category_id', intval($id_category))->update(['category_name' => $name_category, 'category_des' => $des_category, 'category_status' => intval($status_category)]);
         return redirect()->action([CategoryController::class, "create_category"]);
     }
+    //end fuction admin category
+    public function show_category($category_id)
+    {
+       
+        $categorys = DB::table('tb1_category_product')
+        // ->join('products','products.category_id','=','tb1_category_product.category_id')
+        // ->join('news_gundam','news_gundam.category_id','=','tb1_category_product.category_id')
+        ->where('category_status','1')->get();
+        $categorys_id = DB::table('tb1_category_product')
+        ->join('products','products.category_id','=','tb1_category_product.category_id')
+        // ->join('news_gundam','news_gundam.category_id','=','tb1_category_product.category_id')
+        ->where('products.category_id',$category_id)
+        // ->where('news_gundam.category_id',$category_id)
+        ->where('category_status',1)->take(1)->get();
+        $brand=DB::table('tb1_brand_product')
+        ->where('brand_status',1)
+        ->get();
+        $data_product=DB::table('products')
+        ->orderBy('product_id', 'desc')->get();
+        $news = DB::table('news_gundam')->where('news_status','1')->take(4)->get();
+        
+       
+        $filter = DB::table("products")
+        ->join('tb1_brand_product','tb1_brand_product.brand_id','=','products.brand_id')
+        ->where('brand_status', 1)
+        ->orderBy('product_id', 'desc')
+        ->paginate(6)->appends(request()->query());
+        
+        $edit_cate=[
+            'filter'=>$filter,
+            'cate_edit'=> $categorys,
+            'brand'=> $brand,
+            'producthome'=> $data_product,
+            'news_gundam'=> $news,
+            'categorys_gundam'=>$categorys_id
+        ];
+        return view('frontend.show_category',$edit_cate);
+    }
 } 

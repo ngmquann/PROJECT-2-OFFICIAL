@@ -25,8 +25,13 @@ use App\Http\Controllers\NewsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//--Frontend--//
 Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/home', [HomeController::class, 'home']);
+Route::get('/show_category_detail/{category_id}', [CategoryController::class, 'show_category']);
+// Route::get('/show_category_detail/{category_id}', [NewsController::class, 'show_news']);
+Route::get('/show_category_detail/show_brand_detail/{brand_id}', [BrandController::class, 'show_brand']);
+Route::get('/news', [HomeController::class, 'news']);
 //--admin--//
 Route::get('/test', [testcontroller::class, 'test']);
 
@@ -63,7 +68,9 @@ Route::get('/news', [HomeController::class, 'news']);
 Route::get('/news/{news_id}', [HomeController::class, 'show_news']);
 
 //--profile user--//
-Route::get('/profile', [ProfileController::class, 'getProfile'])->name('profile');
+Route::get('/profile/{customer_id}', [ProfileController::class, 'getProfile'])->name('profile');
+Route::post('/profile/{customer_id}/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
+Route::post('/profile/{customer_id}/change_pass', [ProfileController::class, 'changePass'])->name('changePass');
 
 //--product admin--//
 Route::get('/admin_product',[ProductControllers::class,'index']);
