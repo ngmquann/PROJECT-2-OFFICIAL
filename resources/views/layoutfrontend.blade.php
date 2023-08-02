@@ -1,33 +1,21 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;" lang="en"><head>
+  <html lang="en"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="​Award Winning​ Design Agency, ​Our way, ​Partner with Codal
-&amp;amp; strategize for the future, Meet The Team, ​We create and improve web &amp;amp; mobile products, Testimonials, About Us, Be the first to know, Contact Us">
     <meta name="description" content="">
     <title>Shop Gundam Online</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/nicepage.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('frontend/css/Page-2.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('frontend/css/frontend.css') }}" media="screen">
-    <link rel="stylesheet" href="{{asset('css/style.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    @yield('addCSS')
     <!-- <link rel="stylesheet" href="{{asset('css/home.css') }}"> -->
     <!-- <link rel="stylesheet" href="{{ asset('css/editbackend.css') }}"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script class="u-script" type="text/javascript" src="{{ asset('frontend/js/jquery.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ asset('frontend/js/nicepage.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ asset('frontend/js/scrip.js') }}" defer=""></script>
-    <!-- <meta name="generator" content="Nicepage 5.14.0, nicepage.com"> -->
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  <!-- link jquery ui -->
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  
     
     <!-- <script type="application/ld+json">{
 		"@context": "#",
@@ -38,7 +26,7 @@
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Page 2">
     <meta property="og:type" content="website">
-  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
+    <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
   <body class="u-body u-xl-mode" data-lang="en">
   <header class="u-clearfix u-header" id="sec-a76a">
       <div class="u-clearfix u-sheet u-sheet-1">
@@ -60,14 +48,42 @@
               @endforeach
               </ul>
             </li>
-            @endforeach        
-          </ul>
+            @endforeach
+            <!--
+            <li class="u-nav-item">
+              <a class="u-button-style u-nav-link " href="#" >Page 1</a>
+            </li>
+            <li class="u-nav-item">
+              <a class="u-button-style u-nav-link " href="#" >Page 2</a>
+            </li> -->
+            
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{url('/')}}">Home</a>
+                </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">About</a>
+                  </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Contact</a>
+                  </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Page-1.html">Page 1</a>
+                  </li><li class="u-nav-item"><a class="u-button-style u-nav-link">News</a>
+                  </li><li class="u-nav-item"><a class="u-button-style u-nav-link">Shop card</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
         </nav>
     <!-- end header -->
     </div>
     </header>
+    <!-- back to top -->
+      <button class="back-to-top">
+        <i class="fa-solid fa-arrow-up"></i>
+      </button>
+    <!-- end back to top -->
     <!-- Body-->
-    @yield('contents')
+    @yield('home')
     <!-- end Body -->
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-9fd8"><div class="u-clearfix u-sheet u-sheet-1">
@@ -84,6 +100,5 @@
         <span>Website Builder Software</span>
       </a>. 
     </section>
-    <script src="{{asset('js/app2.js') }}"></script>
-    @yield('addJS')
+  
 </body></html>

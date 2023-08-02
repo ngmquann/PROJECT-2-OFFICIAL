@@ -13,6 +13,7 @@ class HomeController extends Controller
 {
     public function home(){
         $categorys = DB::table('tb1_category_product')->where('category_status','1')->get();
+        $category = DB::table('tb1_category_product')->where('category_status','1')->whereNotIn('category_id', [1])->get();
         $brand = DB::table('tb1_brand_product')->where('brand_status','1')->get();
         $data_product=DB::table('products')
         ->join('tb1_category_product','tb1_category_product.category_id','=','products.category_id')

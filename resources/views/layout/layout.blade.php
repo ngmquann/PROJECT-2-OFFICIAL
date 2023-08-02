@@ -91,34 +91,33 @@
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-    </div>
-    <!-- ./wrapper -->
-    <!-- jQuery -->
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- DataTables -->
-    <script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
-    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
-    <!-- AdminLTE App -->
-    <!--<script src="{{ asset('js/adminlte.min.js') }}"></script>-->
-    <script src="{{ asset('js/adminlte.js') }}"></script>
-    <!--javascrip-->
-    <script src="{{ asset('js/javascrip.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <!-- <script src="{{ asset('dist/js/demo.js') }}"></script> -->
-    <!-- page script -->
-    <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('backend/js/jquery.dcjqaccordion.2.7.js') }}"></script>
-    <script src="{{ asset('backend/js/scripts.js') }}"></script>
-    <script src="{{ asset('backend/js/jquery.slimscroll.js') }}"></script>
-    <script src="{{ asset('backend/js/jquery.nicescroll.js') }}"></script>
-    <script src="{{ asset('backend/js/jquery2.0.3.min.js') }}"></script>
-    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
-    <script src="{{ asset('backend/js/jquery.scrollTo.js') }}"></script>
-    @yield('script-section')
-</body>
-
+            </aside>
+            <!-- /.control-sidebar -->
+        </div>
+        <!-- ./wrapper -->
+        <!-- jQuery -->
+        <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+        <!-- Bootstrap 4 -->
+        <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- DataTables -->
+        <script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
+        <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
+        <!-- AdminLTE App -->
+        <!--<script src="{{ asset('js/adminlte.min.js') }}"></script>-->
+        <script src="{{ asset('js/adminlte.js') }}"></script>
+        <!--javascrip-->
+        <script src="{{ asset('js/javascrip.js') }}"></script>
+        <!-- AdminLTE for demo purposes -->
+        <!-- <script src="{{ asset('dist/js/demo.js') }}"></script> -->
+        <!-- page script -->
+        <script src="{{asset('backend/js/bootstrap.js')}}"></script>
+        <script src="{{asset('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
+        <script src="{{asset('backend/js/scripts.js')}}"></script>
+        <script src="{{asset('backend/js/jquery.slimscroll.js')}}"></script>
+        <script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
+        <script src="{{asset('backend/js/jquery2.0.3.min.js')}}"></script>
+        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+        <script src="{{asset('backend/js/jquery.scrollTo.js')}}"></script>
+        @yield('script-section')
+    </body>
 </html>

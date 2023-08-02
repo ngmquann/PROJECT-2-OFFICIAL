@@ -26,7 +26,10 @@ class ProfileController extends Controller
         $email = $request->input('email');
         $phone = $request->input('phone');
 
-        $user = DB::table('users')->where('customer_id', $customer_id)->first();
+        $existingUser = DB::table('users')->where('email', $email)->where('customer_id', '!=', $customer_id)->first();
+        if ($existingUser) {
+            return redirect()->back()->with('mess', 'Email already exists. Please choose a different email.');
+        }
         
         DB::table('users')->where('customer_id', $customer_id)->update([
             'customer_name' => $name,

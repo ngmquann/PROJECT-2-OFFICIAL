@@ -1,14 +1,14 @@
-@extends('layout.layout2')
+@extends('layoutfrontend')
 @section('content')
 <div class="container content mt-5">
         <div class="row">
-          <div class="col-sm-12 col-md-3">
+          <div class="col-sm-12 col-md-4 col-lg-3">
             <div class="row">
             @foreach($user as $key)
-              <div class="col-xs-12 col-md-4">
+              <div class="col-xs-12 col-md-6 col-lg-4 div_avt">
                 <img src="https://yt3.googleusercontent.com/ytc/AOPolaTHPnijO_sOr1Yo96qfg4aXm7jiDW7EMFoMp_pQCA=s900-c-k-c0x00ffffff-no-rj" alt="" class="avt">
               </div>
-              <div class="col-xs-12 col-md-8">
+              <div class="col-xs-12 col-md-6 col-lg-8">
                 <p class="name">{{$key->customer_name}}</p>
                 <div id="editProfile">
                   <p class=""><i class="fa-solid fa-pencil" style="color: rgb(136, 25, 86);"></i> Edit profile</p>
@@ -18,16 +18,17 @@
               <hr class="hr_lg" style="margin-top: 6px;">
               <div class="col-xs-12">
               <p id="changePassword"><i class="fa-solid fa-key" style="color: rgb(74, 74, 237);"></i> Change password</p>
-              <p id="booking"><i class="fa-solid fa-calendar-days" style="color: rgb(74, 74, 237);"></i> Booking history</p>
-              <p><i class="fa-solid fa-ticket" style="color: tomato;"></i> Voucher</p>
+              <p id="booking"><i class="fa-solid fa-calendar-days" style="color: rgb(74, 74, 237);"></i> Purchase history</p>
             </div>
             </div>
           </div>
             <hr class="hr_res">
-          <div class="col-sm-12 col-md-9">
+          <div class="col-sm-12 col-md-8 col-lg-9">
             <div class="row" id="profile">
-              <p class="headerContent"><i class="fa-regular fa-address-card"></i> Profile</p>
-              <div class="des">Welcome to Gundam-X</div>
+              <div class="col2">
+                <p class="headerContent"><i class="fa-regular fa-address-card"></i> Profile</p>
+                <div class="des">Welcome to Gundam-X</div>
+              </div>
               <hr class="hr_lg_x">
 
               @if(session('mess'))

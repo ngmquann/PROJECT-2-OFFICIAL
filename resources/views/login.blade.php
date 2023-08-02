@@ -1,4 +1,4 @@
-@extends('layout.layout2')
+@extends('layoutfrontend')
 @section('content')
 
 @if(session('message'))

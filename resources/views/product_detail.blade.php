@@ -1,5 +1,5 @@
 @extends('layoutfrontend')
-@section('contents')
+@section('content')
 <div class="u-body u-xl-mode">
 @foreach($filter as $item)
 <section class="u-clearfix u-grey-5 u-section-1" id="sec-2dd8" style="background-color: #fff;">
@@ -10,7 +10,7 @@
               <div class="u-carousel-inner u-gallery-inner" role="listbox"><!--product_gallery_item-->
                 <div class="active u-active u-carousel-item u-gallery-item u-shape-rectangle">
                   <div class="u-back-slide">
-                    <img class="u-back-image u-expanded" src="{{ asset("/img-product/$item->image") }}">
+                    <img class="u-back-image u-expanded" src="{{ asset("/images/$item->image") }}">
                   </div>
                   <div class="u-over-slide u-over-slide-1">
                     <h3 class="u-gallery-heading">Sample Title</h3>
@@ -49,7 +49,7 @@
               </a>
               <ol class="u-carousel-thumbnails u-spacing-25 u-carousel-thumbnails-1"><!--product_gallery_thumbnail-->
                 <li class="u-active u-carousel-thumbnail u-carousel-thumbnail-1" data-u-target="#carousel-1d4a" data-u-slide-to="0">
-                    <img class="u-carousel-thumbnail-image u-image" src="{{ asset("/img-product/$item->image") }}">
+                    <img class="u-carousel-thumbnail-image u-image" src="{{ asset("/images/$item->image") }}">
                 </li><!--/product_gallery_thumbnail--><!--product_gallery_thumbnail-->
                 <li class="u-carousel-thumbnail u-carousel-thumbnail-2" data-u-target="#carousel-1d4a" data-u-slide-to="1">
                   <img class="u-carousel-thumbnail-image u-image" src="data:image/svg+xml;base64,DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9Im1hbiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIyNTZweCIgaGVpZ2h0PSIyNTZweCIgdmlld0JveD0iMCAwIDI1NiAyNTYiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI1NiAyNTYiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHJlY3QgZmlsbD0iI0M2RDhFMSIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiLz4NCjxwYXRoIGZpbGw9IiM3Rjk2QTYiIGQ9Ik0xMTAuOCw0My45Yy0yLjIsMTUuNi0xNS45LDI5LTE5LjUsNDMuOWMtMy4zLDE0LjEtMi45LDI4LjktMy43LDQzLjRjLTAuNywxMy40LTEuMSwyNy0xLjEsNDAuNQ0KCWMwLDYuNS0yLjYsMzEuNC0xLjgsMzdjMTQuNywxNy42LDc0LjgsNy44LDc3LjEsNC40YzEuMy0xLjktMS40LTE4LTAuNy0yNi45Yy0xLjItMjIuMSwwLjUtNTEuNiwxLjEtNjYuMQ0KCWMwLjUtMTMuNCwzLjMtMjUuOSwzLjMtMzkuNHMtMy44LTIzLjgtMTAuMy0zNS4zYy0yLjMtNC4xLTQuOC04LTgtMTEuNWMtNC40LTQuOC00LjktNC4yLTEwLTAuN2MtMy44LDIuNi02LjYsNS4xLTExLDYuNg0KCWMtMy42LDEuMy05LjQsMy4zLTE1LjgsNC4yIi8+DQo8cGF0aCBmaWxsPSIjQzZEOEUxIiBkPSJNMTU3LDExOC44YzQuOS0yOS4zLDIuMy00OC43LTcuOC01Ny43Yy04LjEtNy4yLTE3LjgtNS0xOS4zLTQuNmMtNC42LDAuNi04LjUsMi45LTExLjMsNi44DQoJYy0xMS40LDE1LjYtNC45LDUyLjEtNC4yLDU2LjJ2MC4xdjAuMWwwLjIsMC44aDAuMWMyLDQuNSwxMy44LDUuNywyMSw1LjdzMTkuMS0xLjMsMjEtNS44bDAsMGwwLDBjMC4yLTAuNCwwLjMtMC44LDAuMy0xLjMNCglDMTU3LDExOC45LDE1NywxMTguOSwxNTcsMTE4Ljh6IE0xMzUuNywxMjJjLTEwLjgsMC0xNi4xLTIuMi0xNy4yLTMuMWMxLjEtMC45LDYuMy0zLjEsMTcuMi0zLjFzMTYuMSwyLjIsMTcuMiwzLjENCglDMTUxLjgsMTE5LjgsMTQ2LjUsMTIyLDEzNS43LDEyMnogTTEyMS43LDY1LjZjMi4yLTMsNS4xLTQuNyw4LjctNS4yaDAuNWwwLjEtMC4xYzEuMi0wLjMsOS0xLjksMTUuNCwzLjhjNiw1LjQsMTEuOSwxOC42LDcuMSw1MC44DQoJYy00LjUtMi4yLTEyLjQtMi45LTE3LjgtMi45Yy01LjUsMC0xMy42LDAuNy0xOC4xLDNDMTE2LDEwMy4zLDExMy40LDc3LDEyMS43LDY1LjZ6Ii8+DQo8cGF0aCBmaWxsPSIjQzZEOEUxIiBkPSJNMTQ3LjUsMzIuNmwtMi0wLjJsLTAuMiwwLjljLTAuNSwyLjUtNS43LDYuMy0xNC40LDEwLjNjLTYuNywzLjQtMTYsNS4zLTE5LjksNC4ybC0xLTAuM2wtMS4zLDMuOGwxLDAuMw0KCWMxLjEsMC4zLDIuMywwLjQsMy45LDAuNGM1LjQsMCwxMy4zLTIsMTkuMi00LjljMTUuMy03LjIsMTYuMy0xMS41LDE2LjYtMTMuMmwwLjItMUwxNDcuNSwzMi42eiIvPg0KPC9zdmc+DQo=">
@@ -71,14 +71,24 @@
                 <div class="u-price" style="font-size: 1.5rem; font-weight: 700;"><!--product_regular_price_content-->${{$item->product_price}}<!--/product_regular_price_content--></div><!--/product_regular_price-->
               </div>
             </div><!--/product_price-->
+            <!--product_content-->
+            <div class="u-product-control u-product-desc u-text u-text-2">
+                <p>{{$item->product_des}}</p>
+            </div>
+
             <!--product_variations-->
+            <form method="get" action="{{url('cart/'.$item->product_id)}}">
+              @csrf
             <div class="u-product-control u-product-variations u-product-variations-1"><!--product_variation-->
               <div class="u-product-variant">
                 <div class="col-12">
-                  <b>Amount: </b>
-                  <button class="btn btn-light" id="btn-minus"><i class="fa-solid fa-minus"></i></button>
-                  <input id="value" type="text" style="width: 50px; text-align: center" value="1">
-                  <button class="btn btn-light" id="btn-plus"><i class="fa-solid fa-plus"></i></button>
+                  
+                  
+                    <b>Amount: </b>
+                    <button type="button" class="btn btn-light" id="btn-minus"><i class="fa-solid fa-minus"></i></button>
+                    <input id="value" type="text" name="qty" style="width: 50px; text-align: center" value="1">
+                    <input type="hidden" name="productid_hidden" value="{{$item->product_id}}">
+                    <button type="button" class="btn btn-light" id="btn-plus"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div><!--/product_variation-->
             </div><!--/product_variations-->
@@ -95,11 +105,10 @@
                 @endif
               </div>
             </div><!--/product_price-->
-            <!--product_content-->
-            <div class="u-product-control u-product-desc u-text u-text-2"><!--product_content_content-->
-                <p>{{$item->product_des}}</p><!--/product_content_content-->
-            </div><!--/product_content--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart","content":""}--><!--/options_json-->
-            <a href="#" class="u-black u-btn u-button-style u-product-control u-btn-1"><!--product_button_content-->Add to Cart<!--/product_button_content--></a><!--/product_button-->
+            <div class="d-flex mt-4 justify-content-center buy-now">
+              <button class="btn btn-primary" type="submit">Add to Cart</button>
+            </div>
+            </form>
           </div>
         </div><!--/product_item--><!--/product-->
         <h3 style="text-align: center;">Product Description</h3>
@@ -130,7 +139,7 @@
             <div class="u-align-center u-container-style u-products-item u-repeater-item">
               <a href="#" class="u-product-title-link">
               <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
-                <img alt="" class="u-expanded-width u-image u-image-default u-product-control u-image-1" src="{{ asset("/img-product/$item->image") }}">
+                <img alt="" class="u-expanded-width u-image u-image-default u-product-control u-image-1" src="{{ asset("/images/$item->image") }}">
                 <h4 class="u-align-center u-product-control u-text u-text-1 hidden">
                   <a class="u-product-title-link" href="#">{{$item->product_name}}</a>
                 </h4><!--/product_title--><!--product_price-->

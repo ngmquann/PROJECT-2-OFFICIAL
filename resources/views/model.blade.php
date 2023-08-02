@@ -1,4 +1,4 @@
-@extends('layout.layout2')
+@extends('layoutfrontend')
 @section('content')
 <div class="container">
       <div class="row mb-5">
@@ -79,8 +79,8 @@
               <div class="row">
                 @foreach ($filter as $item)
                 <div class="item col-xs-12 col-md-6 col-lg-4 mt-3">
-                  <a href="{{url('product_detail/'.$item->product_id)}}" class="item col-xs-12 col-md-6 col-lg-4 mt-3 detail">
                   <div class="card">
+                    <a href="{{url('product_detail/'.$item->product_id)}}" class="mt-3 detail">
                     <img class="card-img-top" src="{{ asset("/img-product/$item->image") }}" alt="" />
                     <div class="card-body">
                       <p class="h6"><small class="text-muted filter-brand">{{$item->brand_name}}</small></br>{{$item->product_name}}</p>
@@ -99,25 +99,13 @@
                         @endif
                       </p>
                     </div>
+                    </a>
                     <div class="card-footer p-0">
                       <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-light">
-                          <i class="fas fa-cart-plus"></i>
-                          <span>Add Cart</span>
-                        </button>
-                        <button type="button" class="btn btn-light">
-                          <i class="fas fa-shopping-cart"></i>
-                        </button>
-                        <button type="button" class="btn btn-light">
-                          <i class="fas fa-heart"></i>
-                        </button>
-                        <button type="button" class="btn btn-light">
-                          <i class="fas fa-sync-alt"></i>
-                        </button>
+                        <a href="#" data-url="{{route('cart', ['product_id' => $item->product_id])}}" class="btn btn-secondary cart" role="button" aria-disabled="true"><i class="fas fa-cart-plus"></i> Add Cart</a>
                       </div>
                     </div>
                   </div>
-                </a>
                 </div>
                 @endforeach
               </div>
@@ -139,6 +127,31 @@
         </div>
       </div>
     </div>
+
+    <script>
+      function addToCart(e) {
+        e.preventDefault();
+        let url = $(this).data('url');
+
+        $.ajax({
+          url: url,     
+          type: 'GET',   
+          dataType: 'JSON',         
+          success: function(data){
+            if (data.code === 200) {
+              alert('Add to cart successfully');
+            }
+          },
+          error: function(){
+
+          }
+        });
+      }
+
+      $(document).ready(function () {
+        $('.cart').on('click', addToCart);
+      });
+    </script>
 @endsection
 
 @section('addCSS')
