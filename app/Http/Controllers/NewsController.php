@@ -38,7 +38,9 @@ class NewsController extends Controller
     }
     public function delete($id)
     {
-        $p = DB::table('news_gundam')
+        DB::table('news_gundam_tags')->where('news_id', intval($id))->delete();
+
+        DB::table('news_gundam')
             ->where('news_id', intval($id))
             ->delete();
         return redirect()->action([NewsController::class, "index"]);
@@ -72,7 +74,7 @@ class NewsController extends Controller
                 return Redirect('create_news')->with('Error', 'Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
             }
             $imageName = $get_image->getClientOriginalName();
-            $get_image->move('news_images', $imageName);
+            $get_image->move('images/news_images', $imageName);
             $data_news['news_images'] = $imageName;
         } else {
             $imageName = null;
@@ -111,7 +113,7 @@ class NewsController extends Controller
                 return Redirect('create_news')->with('Error', 'Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
             }
             $imageName = $get_image->getClientOriginalName();
-            $get_image->move('news_images', $imageName);
+            $get_image->move('images/news_images', $imageName);
 
         } else {
             //nếu có hình sẽ giữ lại hình củ

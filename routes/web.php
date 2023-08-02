@@ -58,6 +58,9 @@ Route::post('/check_login', [Admincontroller::class, 'check_login']);
 //--show_product--//
 Route::get('/model', [ProductController1::class, 'showProductHome']);
 
+// show_new
+Route::get('/news', [HomeController::class, 'news']);
+Route::get('/news/{news_id}', [HomeController::class, 'show_news']);
 
 //--profile user--//
 Route::get('/profile', [ProfileController::class, 'getProfile'])->name('profile');

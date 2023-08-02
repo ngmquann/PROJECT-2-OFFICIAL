@@ -47,7 +47,7 @@
                                         {{-- <td>{{ $p->category_id}}</td> --}}
                                         <td>{{ $p->news_titles}}</td>
                                         <td>{{ $p->news_des}}</td>
-                                        <td><img width="100px" src="{{ url("/images/{$p->news_images}")}}"/></td>
+                                        <td><img width="100px" src="{{ url("/images/news_images/{$p->news_images}")}}"/></td>
                                         <td>
                                             <?php
                                             if($p->news_status==0)
