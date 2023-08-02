@@ -53,7 +53,7 @@
                             </a>
                         </li>
                     </ul>
-                    
+
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -74,10 +74,10 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Brand</p>
                             </a>
-                        </li> 
-                        
+                        </li>
+
                     </ul>
-                    
+
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -99,8 +99,14 @@
                                 <p>Add Post</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/news/tags') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tags</p>
+                            </a>
+                        </li>
                     </ul>
-                    
+
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{url('/login_admin')}}" class="nav-link">
@@ -109,9 +115,9 @@
                                 <i class="right "></i>
                             </p>
                     </a>
-                    
+
                 </li>
-            </ul> 
+            </ul>
         </nav>
         <!-- /.sidebar-menu -->
     </div>

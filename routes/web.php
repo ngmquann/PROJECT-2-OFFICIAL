@@ -61,6 +61,9 @@ Route::post('/check_login', [Admincontroller::class, 'check_login']);
 //--show_product--//
 Route::get('/model', [ProductController1::class, 'showProductHome']);
 
+// show_new
+Route::get('/news', [HomeController::class, 'news']);
+Route::get('/news/{news_id}', [HomeController::class, 'show_news']);
 
 //--profile user--//
 Route::get('/profile/{customer_id}', [ProfileController::class, 'getProfile'])->name('profile');
@@ -88,6 +91,11 @@ Route::get('/update_news/{news_id}',[NewsController::class,'edit_news']);
 Route::post('/post_update_news/{news_id}',[NewsController::class,'postCreateUpdate']);
 Route::get('/delete_news/{news_id}',[NewsController::class,'delete']);
 // });
+
+//--news Tag--//
+Route::get('news/tags', [NewsController::class, 'news_tags']);
+Route::post('/news/save_tag', [NewsController::class, 'save_tag']);
+Route::get('/news/delete_tags/{tag_id}', [NewsController::class, 'delete_tag']);
 
 //--user register--//
 Route::get('/register',[RegisterController::class,'get'])->name('get');
