@@ -223,6 +223,7 @@ html{
     list-style: none;
     margin: 0;
     padding: 0;
+    z-index: 1;
 }
 #main-menu li{
     position: relative;
@@ -232,6 +233,7 @@ html{
     text-decoration: none;
     display: block;
     padding: 0px 20px;
+    font-size: 17px;
 }
 #main-menu li:hover{
     border-bottom: #dc7808 3px solid;
@@ -244,6 +246,7 @@ html{
     list-style: none;
     width: auto;
     top:12px;
+    z-index: 1;
 }
 #main-menu li:hover .sub-menu{
     display: block;
@@ -251,6 +254,7 @@ html{
 #main-menu ul li a{
     padding: 8px 15px;
     border-bottom: black 1px solid;
+    font-size: 17px;
 }
 #main-menu ul li:hover a{
     border-bottom: 3px solid #dc7808;
@@ -258,5 +262,27 @@ html{
 }
 #main-menu ul li:last-child a{
     border:none;
+}
+.category-show{
+    z-index: 1000;
+}
+/* edit show category */
+/* brand model */
+.name-brand-product{
+    font-size: 12px;
+    border-radius: 10px;
+    border-bottom: #dc7808 3px solid;
+    color: black;
+    font-weight: bold;
+
+}
+/* name product */
+.name-product{
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+}
+.link-product{
+    text-decoration: none;
 }
 

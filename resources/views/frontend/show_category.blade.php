@@ -1,17 +1,22 @@
-@extends('layout.layout2')
-@section('content')
-<div class="container">
+@extends('layoutfrontend')
+@section('contents')
+<div class="container category-show">
       <div class="row mb-5">
         <div class="col-md-3">
         <div class="card mb-4">
         <div class="card-header">Categories</div>
+        
         <ul class="list-group">
-          <a href="{{url('model')}}" class="list-group-item list-group-item-action view-all"><b>View all</b></a>
-          @foreach($brand as $item)
+        @foreach($categorys_gundam as $gundam_category)
+          <a href="{{url('/show_category_detail/'.$gundam_category->category_id)}}" class="list-group-item list-group-item-action view-all"><b>{{$gundam_category->category_name}}</b></a>        
+          @foreach($brand as $gundam_brand)
+          @if($gundam_brand->category_id == $gundam_category->category_id)
           <li class="list-group-item list-group-item-action">
-            <a href="{{url('model')}}?brand={{$item->brand_name}}" class="link-offset-2 link-underline link-underline-opacity-0">{{$item->brand_name}}</a>
+            <a href="{{url('/show_category_detail/show_brand_detail/'.$gundam_brand->brand_id)}}" class="link-offset-2 link-underline link-underline-opacity-0">{{$gundam_brand->brand_name}}</a>
           </li>
+          @endif
           @endforeach
+        @endforeach
         </ul>
       </div>
       <div class="card mb-4">
@@ -74,29 +79,29 @@
               </div>
             </div>
             <div id="filtered-products">
-            @if($filter->count() >= 1)
+            <!-- @if($filter->count() >= 1) -->
             <div class="card-body">
               <div class="row">
-                @foreach ($filter as $item)
-                <div class="item col-xs-12 col-md-6 col-lg-4 mt-3">
-                  <a href="{{url('product_detail/'.$item->product_id)}}" class="item col-xs-12 col-md-6 col-lg-4 mt-3 detail">
+              @foreach ($filter as $item)
+                <div class="item col-xs-12 col-md-6 col-lg-4 mt-3 mb-3">
+                  <a href="{{url('product_detail/'.$item->product_id)}}" class="link-product">
                   <div class="card">
-                    <img class="card-img-top" src="{{ asset("/img-product/$item->image") }}" alt="" />
+                    <img class="card-img-top img-card-edit" src="{{ url("/images/$item->image") }}" alt="" />
                     <div class="card-body">
-                      <p class="h6"><small class="text-muted filter-brand">{{$item->brand_name}}</small></br>{{$item->product_name}}</p>
-                      <!-- <p class="m-0">
+                    <p class="h6"><small class="text-muted filter-brand name-brand-product">Brand Model: {{$item->brand_name}}</small></br><span class="name-product">{{$item->product_name}}</span></p>
+                      <p class="m-0">
+                        <!-- <i class="fa-xs far fa-star"></i>
                         <i class="fa-xs far fa-star"></i>
                         <i class="fa-xs far fa-star"></i>
                         <i class="fa-xs far fa-star"></i>
-                        <i class="fa-xs far fa-star"></i>
-                        <i class="fa-xs far fa-star"></i>
-                      </p> -->
+                        <i class="fa-xs far fa-star"></i> -->
+                      </p>
                       <p class="h5 m-0">${{$item->product_price}}
-                        @if ($item->sale == null)
+                      @if ($item->sale == null)
                         <s class="lead text-muted" hidden>${{$item->sale}}</s>
-                        @else
+                      @else
                         <s class="lead text-muted">${{$item->sale}}</s>
-                        @endif
+                      @endif
                       </p>
                     </div>
                     <div class="card-footer p-0">
@@ -122,24 +127,26 @@
                 @endforeach
               </div>
             </div>
-            @else
+            <!-- @else -->
             <div class="item col-md-6 col-lg-4 mt-3">
               <h2>Nothing Found</h2>
             </div>
-            @endif
+            <!-- @endif -->
             </div>
             <div class="card-footer p-3">
               <div class="row">
                 <div class="col-md-12">
-                  {{$filter->links()}}
+                  
                 </div>
               </div>
             </div>
+           
           </div>
         </div>
       </div>
     </div>
 @endsection
+
 
 @section('addCSS')
   <link rel="stylesheet" href="{{asset('css/model.css') }}">

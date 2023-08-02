@@ -28,6 +28,8 @@ use App\Http\Controllers\NewsController;
 //--Frontend--//
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/home', [HomeController::class, 'home']);
+Route::get('/show_category_detail/{category_id}', [CategoryController::class, 'show_category']);
+Route::get('/show_category_detail/show_brand_detail/{brand_id}', [BrandController::class, 'show_brand']);
 Route::get('/news', [HomeController::class, 'news']);
 //--admin--//
 Route::get('/test', [testcontroller::class, 'test']);

@@ -1,6 +1,6 @@
 <!--Main layout-->
 @extends('layoutfrontend')
-@section('home')
+@section('contents')
 <div class="container">
   <!--Section: News of the day-->
   <section class="border-bottom pb-4 mb-5">

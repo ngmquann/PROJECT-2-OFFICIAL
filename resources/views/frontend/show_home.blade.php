@@ -1,5 +1,5 @@
 @extends('layoutfrontend')
-@section('home')
+@section('contents')
 <section class="u-align-center u-clearfix u-image u-valign-middle u-section-1 homesection" id="carousel_3ef8" data-image-width="1980" data-image-height="1320">
 <main role="main">
 <div class="video">
