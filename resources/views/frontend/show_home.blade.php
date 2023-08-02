@@ -1,5 +1,5 @@
 @extends('layoutfrontend')
-@section('content')
+@section('contents')
 <section class="u-align-center u-clearfix u-image u-valign-middle u-section-1 homesection" id="carousel_3ef8" data-image-width="1980" data-image-height="1320">
 <main role="main">
 <div class="video">
@@ -12,6 +12,7 @@
       <div class="text-on-video">
         <img src="{{asset('home-img/text logo.png') }}" alt="" class="text-on-vid">
       </div>
+      
     </div>
     <div class="u-list u-list-1">
         <div class="u-repeater u-repeater-1">
@@ -56,20 +57,19 @@
         <h2 class="u-text u-text-default u-text-1">Product News</h2>
         <div class="u-expanded-width u-gallery u-layout-horizontal u-lightbox u-no-transition u-show-text-on-hover u-width-fixed u-gallery-1">
           <div class="u-gallery-inner">
-          @foreach($producthome as $pro_new)
+          @foreach($producthome as $pro_new)     
+          <a href="{{url('/product_detail/'.$pro_new->product_id)}}">
           <div class="u-effect-fade u-gallery-item u-gallery-item-1 card">
-            
             <div class="u-back-slide effectslide">
-              <img class="u-back-image u-back-image-1" src="{{asset("/images/$pro_new->image")}}">
+            <img class="u-back-image u-back-image-1" src="{{asset("/images/$pro_new->image")}}">
             </div>
               <div class="u-over-slide u-shading u-valign-bottom u-over-slide-1 edit">
                 <h2 class="title-product">{{$pro_new->product_name}}</h2>
-                
                   <p class="price-product"><span>Price: </span><span class="edit-price">{{$pro_new->product_price}}$</span></p>
-                
               </div>
           </div>
-          @endforeach
+          </a>
+          @endforeach 
         </div>
           <a class="u-absolute-vcenter u-gallery-nav u-gallery-nav-prev u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-gallery-nav-1" href="#" role="button">
             <span aria-hidden="true">
@@ -107,7 +107,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
             @foreach($news_gundam as $news)
             <div class="u-align-center-xs u-container-style u-list-item u-repeater-item u-list-item-1 edit-news" data-animation-name="customAnimationIn" data-animation-duration="1500">
               <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
-                <!-- <h3 class="u-align-center u-custom-font u-font-montserrat u-text u-text-default u-text-3" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">2019</h3> -->
+               
                 <div class="edit-h3">
                   <h3 class="u-text u-text-default u-text-4 title-news">{{$news->news_titles}}</h3>
                 </div>
@@ -115,10 +115,12 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
               </div>
             </div>
             @endforeach
+           
           </div>
         </div>
       </div>
     </section>
+   
     <section class="u-align-center u-clearfix u-image u-valign-middle u-section-8 backgroudsection" id="carousel_d050" data-image-width="1980" data-image-height="1321" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
       <div class="u-clearfix u-gutter-0 u-layout-wrap u-layout-wrap-1">
         <div class="u-gutter-0 u-layout divaboutus">

@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Content</label>
-                                <textarea class="form-control" name="content_product" id="ckeditor" placeholder="Content">{{$edit_p->product_content}}</textarea>
+                                <textarea class="form-control ckeditor" name="content_product"  placeholder="Content">{{$edit_p->product_content}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Image</label><br>
