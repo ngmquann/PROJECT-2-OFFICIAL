@@ -100,7 +100,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/news/tags') }}" class="nav-link">
+                            <a href="{{ url('/admin_news/tags') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Tags</p>
                             </a>

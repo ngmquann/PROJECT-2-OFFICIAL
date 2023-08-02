@@ -95,9 +95,9 @@ Route::get('/delete_news/{news_id}',[NewsController::class,'delete']);
 // });
 
 //--news Tag--//
-Route::get('news/tags', [NewsController::class, 'news_tags']);
-Route::post('/news/save_tag', [NewsController::class, 'save_tag']);
-Route::get('/news/delete_tags/{tag_id}', [NewsController::class, 'delete_tag']);
+Route::get('admin_news/tags', [NewsController::class, 'news_tags']);
+Route::post('/admin_news/save_tag', [NewsController::class, 'save_tag']);
+Route::get('/admin_news/delete_tags/{tag_id}', [NewsController::class, 'delete_tag']);
 
 //--user register--//
 Route::get('/register',[RegisterController::class,'get'])->name('get');

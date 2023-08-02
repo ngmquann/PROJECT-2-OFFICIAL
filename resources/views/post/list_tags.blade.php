@@ -7,7 +7,7 @@
                 Tags
             </header>
             <div class="table-agile-info">
-                <form action="{{ url('/news/save_tag') }}" method="post">
+                <form action="{{ url('/admin_news/save_tag') }}" method="post">
                     @csrf
                     <div class="input-group mb-3 col-4">
                         <div class="input-group-prepend">
@@ -38,7 +38,7 @@
                                             href="{{ url("/news/update/{$blog->news_id}") }}">
                                             <i class="fas fa-pencil-alt"></i> Edit </a> --}}
                                             <a class="btn btn-danger btnsm"
-                                                href="{{ url("/news/delete_tags/{$tag->tag_id}") }}">
+                                                href="{{ url("/admin_news/delete_tags/{$tag->tag_id}") }}">
                                                 <i class="fas fa-trash"></i> Delete </a>
                                         </td>
                                     </tr>

@@ -162,7 +162,7 @@ class NewsController extends Controller
                 'tag_name' => $tag['tag_name'],
             ]);
         // Session::put('notification','Successful Data Entry');
-        return Redirect('/news/tags');
+        return Redirect('/admin_news/tags');
 
     }
     public function delete_tag($tag_id)
@@ -170,7 +170,7 @@ class NewsController extends Controller
         $p = DB::table('news_tag')
             ->where('tag_id', intval($tag_id))
             ->delete();
-        return redirect('/news/tags');
+        return redirect('admin_news/tags');
     }
 
 }
