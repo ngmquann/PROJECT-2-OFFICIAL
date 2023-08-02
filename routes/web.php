@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -102,3 +103,8 @@ Route::get('/product_detail/{product_id}',[ProductDetailController::class,'get']
 
 //--Contact--//
 Route::get('/contact',[ContactController::class,'get']);
+
+//--Cart--//
+Route::get('/show-cart',[CartController::class,'showCart'])->name('showCart');
+Route::get('/update-cart',[CartController::class,'updateCart'])->name('updateCart');
+Route::get('/delete-cart',[CartController::class,'deleteCart'])->name('deleteCart');

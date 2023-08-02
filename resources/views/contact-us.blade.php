@@ -1,4 +1,4 @@
-@extends('layout.layout2')
+@extends('layoutfrontend')
 @section('content')
 <div class="u-body u-xl-mode">
   <section class="u-clearfix u-section-1" id="sec-76fa">

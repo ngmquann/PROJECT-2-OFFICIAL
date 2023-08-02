@@ -1,4 +1,4 @@
-@extends('layout.layout2')
+@extends('layoutfrontend')
 @section('content')
 <div class="u-body u-xl-mode">
 @foreach($filter as $item)
@@ -71,14 +71,24 @@
                 <div class="u-price" style="font-size: 1.5rem; font-weight: 700;"><!--product_regular_price_content-->${{$item->product_price}}<!--/product_regular_price_content--></div><!--/product_regular_price-->
               </div>
             </div><!--/product_price-->
+            <!--product_content-->
+            <div class="u-product-control u-product-desc u-text u-text-2">
+                <p>{{$item->product_des}}</p>
+            </div>
+
             <!--product_variations-->
+            <form method="get" action="{{url('cart/'.$item->product_id)}}">
+              @csrf
             <div class="u-product-control u-product-variations u-product-variations-1"><!--product_variation-->
               <div class="u-product-variant">
                 <div class="col-12">
-                  <b>Amount: </b>
-                  <button class="btn btn-light" id="btn-minus"><i class="fa-solid fa-minus"></i></button>
-                  <input id="value" type="text" style="width: 50px; text-align: center" value="1">
-                  <button class="btn btn-light" id="btn-plus"><i class="fa-solid fa-plus"></i></button>
+                  
+                  
+                    <b>Amount: </b>
+                    <button type="button" class="btn btn-light" id="btn-minus"><i class="fa-solid fa-minus"></i></button>
+                    <input id="value" type="text" name="qty" style="width: 50px; text-align: center" value="1">
+                    <input type="hidden" name="productid_hidden" value="{{$item->product_id}}">
+                    <button type="button" class="btn btn-light" id="btn-plus"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div><!--/product_variation-->
             </div><!--/product_variations-->
@@ -95,11 +105,10 @@
                 @endif
               </div>
             </div><!--/product_price-->
-            <!--product_content-->
-            <div class="u-product-control u-product-desc u-text u-text-2"><!--product_content_content-->
-                <p>{{$item->product_des}}</p><!--/product_content_content-->
-            </div><!--/product_content--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart","content":""}--><!--/options_json-->
-            <a href="#" class="u-black u-btn u-button-style u-product-control u-btn-1"><!--product_button_content-->Add to Cart<!--/product_button_content--></a><!--/product_button-->
+            <div class="d-flex mt-4 justify-content-center buy-now">
+              <button class="btn btn-primary" type="submit">Add to Cart</button>
+            </div>
+            </form>
           </div>
         </div><!--/product_item--><!--/product-->
         <h3 style="text-align: center;">Product Description</h3>

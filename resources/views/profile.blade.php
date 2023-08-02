@@ -1,4 +1,4 @@
-@extends('layout.layout2')
+@extends('layoutfrontend')
 @section('content')
 <div class="container content mt-5">
         <div class="row">
