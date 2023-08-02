@@ -1,5 +1,5 @@
-@extends('layout.layout2')
-@section('content')
+@extends('layoutfrontend')
+@section('contents')
 <div class="u-body u-xl-mode">
 @foreach($filter as $item)
 <section class="u-clearfix u-grey-5 u-section-1" id="sec-2dd8" style="background-color: #fff;">

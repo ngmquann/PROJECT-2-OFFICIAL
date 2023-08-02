@@ -14,12 +14,7 @@ class HomeController extends Controller
     
     public function home(){
         $categorys = DB::table('tb1_category_product')->where('category_status','1')->get();
-        $brand = DB::table('tb1_brand_product')
-        // ->join('tb1_category_product','tb1_category_product.category_id','=','tb1_brand_product.category_id')
-        // ->join('products','tb1_brand_product.brand_id','=','products.brand_id')
-        // ->join('news_gundam','news_gundam.category_id','=','tb1_brand_product.category_id')
-        ->where('brand_status','1')
-        ->get();
+        $brand = DB::table('tb1_brand_product')->where('brand_status','1')->get();
         $data_product=DB::table('products')
         ->join('tb1_category_product','tb1_category_product.category_id','=','products.category_id')
         ->join('tb1_brand_product','tb1_brand_product.brand_id','=','products.brand_id')

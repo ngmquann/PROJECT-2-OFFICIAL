@@ -71,10 +71,15 @@ class CategoryController extends Controller
     public function show_category($category_id)
     {
        
-        $categorys = DB::table('tb1_category_product')->where('category_status','1')->get();
+        $categorys = DB::table('tb1_category_product')
+        // ->join('products','products.category_id','=','tb1_category_product.category_id')
+        // ->join('news_gundam','news_gundam.category_id','=','tb1_category_product.category_id')
+        ->where('category_status','1')->get();
         $categorys_id = DB::table('tb1_category_product')
         ->join('products','products.category_id','=','tb1_category_product.category_id')
+        // ->join('news_gundam','news_gundam.category_id','=','tb1_category_product.category_id')
         ->where('products.category_id',$category_id)
+        // ->where('news_gundam.category_id',$category_id)
         ->where('category_status',1)->take(1)->get();
         $brand=DB::table('tb1_brand_product')
         ->where('brand_status',1)
