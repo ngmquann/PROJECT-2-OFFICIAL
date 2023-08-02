@@ -1,4 +1,4 @@
-@extends('layout.layout2')
+@extends('layoutfrontend')
 @section('content')
 <div class="u-body u-xl-mode">
 @foreach($filter as $item)
