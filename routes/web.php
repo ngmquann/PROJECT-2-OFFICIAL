@@ -27,13 +27,9 @@ use App\Http\Controllers\NewsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//--Frontend--//
+
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/home', [HomeController::class, 'home']);
-Route::get('/show_category_detail/{category_id}', [CategoryController::class, 'show_category']);
-// Route::get('/show_category_detail/{category_id}', [NewsController::class, 'show_news']);
-Route::get('/show_category_detail/show_brand_detail/{brand_id}', [BrandController::class, 'show_brand']);
-Route::get('/news', [HomeController::class, 'news']);
+
 //--admin--//
 Route::get('/test', [testcontroller::class, 'test']);
 
@@ -117,6 +113,9 @@ Route::get('/product_detail/{product_id}',[ProductDetailController::class,'get']
 Route::get('/contact',[ContactController::class,'get']);
 
 //--Cart--//
-Route::get('/show-cart',[CartController::class,'showCart'])->name('showCart');
-Route::get('/update-cart',[CartController::class,'updateCart'])->name('updateCart');
-Route::get('/delete-cart',[CartController::class,'deleteCart'])->name('deleteCart');
+Route::middleware('auth.check')->group(function () {
+  Route::get('/cart/{product_id}',[CartController::class,'cart'])->name('cart');
+  Route::get('/show-cart',[CartController::class,'showCart'])->name('showCart');
+  Route::get('/update-cart',[CartController::class,'updateCart'])->name('updateCart');
+  Route::get('/delete-cart',[CartController::class,'deleteCart'])->name('deleteCart');
+});
