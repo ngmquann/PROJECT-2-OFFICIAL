@@ -15,8 +15,8 @@
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-  
-    
+
+
     <!-- <script type="application/ld+json">{
 		"@context": "#",
 		"@type": "Organization",
@@ -35,7 +35,7 @@
           <img src="{{ asset('images/logo-gundam.png') }}" class="u-logo-image u-logo-image-1">
         </a>
         <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1 nav-menu">
-        
+
           <ul id="main-menu">
             <li><a href="{{url('/home')}}">Home</a></li>
             @foreach($cate_edit as $cate_home)
@@ -56,7 +56,7 @@
             <li class="u-nav-item">
               <a class="u-button-style u-nav-link " href="#" >Page 2</a>
             </li> -->
-            
+
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
@@ -85,7 +85,7 @@
     <!-- Body-->
     @yield('home')
     <!-- end Body -->
-    
+
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-9fd8"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
       </div></footer>
@@ -98,7 +98,7 @@
       </p>
       <a class="u-link" href="" target="_blank">
         <span>Website Builder Software</span>
-      </a>. 
+      </a>.
     </section>
-  
+
 </body></html>

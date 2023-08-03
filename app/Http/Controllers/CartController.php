@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
-<<<<<<< Updated upstream
-=======
     public function cart($product_id){
         $categorys = DB::table('tb1_category_product')->where('category_status','1')->get();
         $brand = DB::table('tb1_brand_product')->where('brand_status','1')->get();
@@ -52,7 +50,6 @@ class CartController extends Controller
             'message' => 'success'
         ], 200);
     }
->>>>>>> Stashed changes
     public function showCart(){
         $categorys = DB::table('tb1_category_product')->where('category_status','1')->get();
         $brand = DB::table('tb1_brand_product')->where('brand_status','1')->get();
