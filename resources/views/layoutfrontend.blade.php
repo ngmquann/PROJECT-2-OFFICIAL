@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/nicepage.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('frontend/css/Page-2.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('frontend/css/frontend.css') }}" media="screen">
-    <link rel="stylesheet" href="{{asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/model.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/cart.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/sweetalert.css') }}">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     @yield('addCSS')
@@ -19,6 +23,7 @@
     <script class="u-script" type="text/javascript" src="{{ asset('frontend/js/jquery.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ asset('frontend/js/nicepage.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ asset('frontend/js/scrip.js') }}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{ asset('frontend/js/sweetalert.js') }}" defer=""></script>
     <!-- <meta name="generator" content="Nicepage 5.14.0, nicepage.com"> -->
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -46,7 +51,7 @@
         <a href="{{url('/home')}}" class="u-image u-logo u-image-1">
           <img src="{{ asset('images/logo-gundam.png') }}" class="u-logo-image u-logo-image-1">
         </a>
-        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1 nav-menu">
+        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1 nav-menu menu-edit">
         
           <ul id="main-menu">
             <li><a href="{{url('/home')}}">Home</a></li>
@@ -60,8 +65,12 @@
               @endforeach
               </ul>
             </li>
-            @endforeach        
+            @endforeach
+                 
           </ul>
+          <a href="{{url('/cart')}}" class="btn btn-style">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart <span class="badge dg-danger badge-style">0</span>
+          </a>  
         </nav>
     <!-- end header -->
     </div>
@@ -84,6 +93,28 @@
         <span>Website Builder Software</span>
       </a>. 
     </section>
+    <script type="text/javascript">
+        $('.add-to-card').click(function()
+        {
+          var id=$(this).data('id');
+          var cart_product_id=$('.cart_product_id_'+id).val();
+          var cart_product_name=$('.cart_product_name_'+id).val();
+          var cart_product_image=$('.cart_product_image_'+id).val();
+          var cart_product_price=$('.cart_product_price_'+id).val();
+          var cart_product_qty=$('.cart_product_qty_'+id).val();
+          var _token=$('input[name="_token"]').val();
+          $.ajax({
+            url:'{{url('/add-cart-ajax')}}',
+            method:'POST',
+            data:{cart_product_id:cart_product_id,cart_product_name:cart_product_name,
+              cart_product_image:cart_product_image,cart_product_price:cart_product_price,
+              cart_product_qty:cart_product_qty,_token:_token},
+              success:function(data){
+                alert(data);
+              }
+          });
+        });
+    </script>
     <script src="{{asset('js/app2.js') }}"></script>
     @yield('addJS')
 </body></html>

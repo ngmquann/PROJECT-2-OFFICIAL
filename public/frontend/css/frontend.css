@@ -284,4 +284,38 @@ html{
 .link-product{
     text-decoration: none;
 }
+/* trang chi tiet san pham */
+.u-product-desc > .product-detail-des{
+    font-size: 14px;
 
+}
+.u-product-desc > .btn-add-to-cart{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: black;
+    color: aliceblue;
+    background-image: none;
+    border-style: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 20px;
+    
+}
+.u-product-desc > .btn-add-to-cart:hover{
+    background-color: #dc7808;
+    color: black;
+}
+
+.menu-edit{
+    display: flex;
+    float: right;
+}
+.menu-edit > a > span{
+    color: #ffff;
+    border-radius: 4px;
+    background-color: red;
+}
+.btn-style:hover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}

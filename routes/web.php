@@ -14,7 +14,8 @@ use App\Http\Controllers\Admincontroller;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\NewsController;
-
+use App\Http\Controllers\CratController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -100,5 +101,13 @@ Route::get('/login',[RegisterController::class,'showLogin'])->name('showLogin');
 Route::post('/login_user',[RegisterController::class,'login'])->name('login_user');
 Route::get('/logout',[RegisterController::class,'logout'])->name('logout');
 
+
 //--product detail--//
 Route::get('/product_detail/{product_id}',[ProductDetailController::class,'get']);
+//--Crat--//
+Route::post('/save_cart',[CratController::class,'savecart']);
+Route::post('/add-cart-ajax',[CratController::class,'add_cart_ajax']);
+Route::get('/cart',[CratController::class,'card']);
+//--Order admin--//
+Route::get('/manage_order',[OrderController::class,'manage_order']);
+Route::get('/delete_order/{order_id}',[OrderController::class,'delete_brand']);

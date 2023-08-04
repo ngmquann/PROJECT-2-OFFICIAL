@@ -84,17 +84,23 @@
               <div class="row">
               @foreach ($filter as $item)
                 <div class="item col-xs-12 col-md-6 col-lg-4 mt-3 mb-3">
-                  <a href="{{url('product_detail/'.$item->product_id)}}" class="link-product">
+                 
                   <div class="card">
-                    <img class="card-img-top img-card-edit" src="{{ url("/images/$item->image") }}" alt="" />
+                    
+                    <form>
+                      @csrf
+                      <input type="hidden" value="{{$item->product_id}}" class="cart_product_id_{{$item->product_id}}">
+                      <input type="hidden" value="{{$item->product_name}}" class="cart_product_name_{{$item->product_id}}">
+                      <input type="hidden" value="{{$item->image}}" class="cart_product_image_{{$item->product_id}}">
+                      <input type="hidden" value="{{$item->product_price}}" class="cart_product_price_{{$item->product_id}}">
+                      <input type="hidden" value="1" class="cart_product_qty_{{$item->product_id}}">
+                    <a href="{{url('product_detail/'.$item->product_id)}}" class="link-product">
+                      <img class="card-img-top img-card-edit" src="{{ url("/images/$item->image") }}" alt="" />
+                    </a>
                     <div class="card-body">
                     <p class="h6"><small class="text-muted filter-brand name-brand-product">Brand Model: {{$item->brand_name}}</small></br><span class="name-product">{{$item->product_name}}</span></p>
                       <p class="m-0">
-                        <!-- <i class="fa-xs far fa-star"></i>
-                        <i class="fa-xs far fa-star"></i>
-                        <i class="fa-xs far fa-star"></i>
-                        <i class="fa-xs far fa-star"></i>
-                        <i class="fa-xs far fa-star"></i> -->
+                       
                       </p>
                       <p class="h5 m-0">${{$item->product_price}}
                       @if ($item->sale == null)
@@ -104,9 +110,10 @@
                       @endif
                       </p>
                     </div>
+                  
                     <div class="card-footer p-0">
                       <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-light">
+                        <button type="button" class="btn btn-light add-to-card" data-id="{{$item->product_id}}">
                           <i class="fas fa-cart-plus"></i>
                           <span>Add Cart</span>
                         </button>
@@ -122,7 +129,7 @@
                       </div>
                     </div>
                   </div>
-                </a>
+                  </form>
                 </div>
                 @endforeach
               </div>

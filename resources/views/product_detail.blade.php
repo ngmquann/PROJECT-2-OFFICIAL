@@ -72,12 +72,16 @@
               </div>
             </div><!--/product_price-->
             <!--product_variations-->
+            <form action="{{url('/save_cart/')}}" method="POST">
+              {{csrf_field()}}
+            <span>
             <div class="u-product-control u-product-variations u-product-variations-1"><!--product_variation-->
               <div class="u-product-variant">
                 <div class="col-12">
                   <b>Amount: </b>
                   <button class="btn btn-light" id="btn-minus"><i class="fa-solid fa-minus"></i></button>
-                  <input id="value" type="text" style="width: 50px; text-align: center" value="1">
+                  <input id="qty" name="qty" type="number" style="width: 50px; text-align: center" min="1" value="1">
+                  <input id="product_hidden" name="product_hidden" type="hidden" style="width: 50px; text-align: center" value="{{$item->product_id}}">
                   <button class="btn btn-light" id="btn-plus"><i class="fa-solid fa-plus"></i></button>
                 </div>
               </div><!--/product_variation-->
@@ -97,10 +101,14 @@
             </div><!--/product_price-->
             <!--product_content-->
             <div class="u-product-control u-product-desc u-text u-text-2"><!--product_content_content-->
-                <p>{{$item->product_des}}</p><!--/product_content_content-->
-            </div><!--/product_content--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart","content":""}--><!--/options_json-->
-            <a href="#" class="u-black u-btn u-button-style u-product-control u-btn-1"><!--product_button_content-->Add to Cart<!--/product_button_content--></a><!--/product_button-->
+                <span class="product-detail-des"><p>{{$item->product_des}}</p></span><!--/product_content_content-->
+            <!--/product_content--><!--product_button--><!--options_json--><!--{"clickType":"add-to-cart","content":""}--><!--/options_json-->
+            <button type="submit" class="btn-add-to-cart">Add to Cart</button> 
+            </div>
+            </span>
+            <!-- <a href="#" class="u-black u-btn u-button-style u-product-control u-btn-1">product_button_content Add to Cart/product_button_content/product_button -->
           </div>
+          </form>
         </div><!--/product_item--><!--/product-->
         <h3 style="text-align: center;">Product Description</h3>
         <hr>

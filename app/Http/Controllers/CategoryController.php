@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
+use App\Models\Gundam;
 
 
 class CategoryController extends Controller
@@ -105,4 +106,9 @@ class CategoryController extends Controller
         ];
         return view('frontend.show_category',$edit_cate);
     }
+    // public function addproductCart($id)
+    // {
+    //     $product=DB::table('products')->findOrFail($id);
+    //     $cart=session()->get('cart',[]);
+    // }
 } 
