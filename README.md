@@ -47,7 +47,7 @@ GUNDAM-X is a website that offers customers the opportunity to access a diverse 
             - $ npm start
 
 
-### Features:
+## Features:
 - Select the desired product to add to the shopping cart.
 - Add, remove, edit, and confirm items in the shopping cart.
 - Fill in the shipping information.
