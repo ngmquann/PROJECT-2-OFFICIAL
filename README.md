@@ -13,7 +13,7 @@ GUNDAM-X is a website that offers customers the opportunity to access a diverse 
 - Slider Gundam selection
 - Product news
 - Product detail pages
-- Payment
+- Shopping cart
 - Login and Register
 - User profile
 - Admin CRUD
@@ -21,9 +21,9 @@ GUNDAM-X is a website that offers customers the opportunity to access a diverse 
 
 ## How To Run
 - Backend ()
-    + Installation Laragon
+    + Installation Laravel
         <p>
-            - Install PHP server Laragon <br>
+            - Install PHP server Laravel <br>
             - Run it <br>
             - Clone this repo into www folder of Laragon<br>
             - Download dbgundamx.sql file in this repo and import to phpmyadmin or mysql and simple run it
