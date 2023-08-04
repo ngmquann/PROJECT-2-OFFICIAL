@@ -67,7 +67,8 @@ Route::get('/model', [ProductController1::class, 'showProductHome']);
 
 // show_new
 Route::get('/news', [HomeController::class, 'news']);
-Route::get('/news/{news_id}', [HomeController::class, 'show_news']);
+Route::get('/news/show/{news_id}', [HomeController::class, 'show_news']);
+Route::get('/news/search', [HomeController::class, 'searchNews']);
 
 //--profile user--//
 Route::get('/profile/{customer_id}', [ProfileController::class, 'getProfile'])->name('profile');

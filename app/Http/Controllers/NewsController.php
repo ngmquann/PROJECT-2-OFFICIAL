@@ -86,6 +86,7 @@ class NewsController extends Controller
                 'news_content' => $data_news['news_content'],
                 'news_status' => $data_news['news_status'],
                 'news_images' => $imageName,
+                'created_at' => now(),
             ]);
 
         $tags = $data_news['category_id'];
@@ -130,6 +131,7 @@ class NewsController extends Controller
             'news_content' => $data_news['news_content'],
             'news_status' => $data_news['news_status'],
             'news_images' => $imageName,
+            'updated_at' => now(),
         ]);
 
         $deleted = DB::table('news_gundam_tags')->where('news_id', $id)->delete();
