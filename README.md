@@ -23,24 +23,24 @@ GUNDAM-X is a website that offers customers the opportunity to access a diverse 
 - Backend ()
     + Installation Laragon
         <p>
-            Install PHP server Laragon <br>
-        Run it<br>
-        Clone this repo into www folder of Laragon<br>
-        Download dbgundamx.sql file in this repo and import to phpmyadmin or mysql and simple run it
+            - Install PHP server Laragon <br>
+            - Run it <br>
+            - Clone this repo into www folder of Laragon<br>
+            - Download dbgundamx.sql file in this repo and import to phpmyadmin or mysql and simple run it
         </p>
-+Setup backend database
-$ Create a .env file in your server and backend folder
-$ See the .env sample
-create a myphpadmin database and add your connection string into .env file
-+Installation dependencies
-$ composer install
-$ php artisan migrate
-$ php artisan passport:install
-$ php artisan serve
+    +Setup backend database
+            $ Create a .env file in your server and backend folder
+            $ See the .env sample
+            create a myphpadmin database and add your connection string into .env file
+    +Installation dependencies
+            $ composer install
+            $ php artisan migrate
+            $ php artisan passport:install
+            $ php artisan serve
 -Frontend ()
-+Installation dependencies
-$ npm i
-$ npm start
+    +Installation dependencies
+            $ npm i
+            $ npm start
 
 
 ### Features:
