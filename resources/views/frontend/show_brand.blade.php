@@ -1,5 +1,5 @@
 @extends('layoutfrontend')
-@section('contents')
+@section('content')
 <div class="container category-show">
       <div class="row mb-5">
         <div class="col-md-3">

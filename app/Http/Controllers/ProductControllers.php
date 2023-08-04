@@ -19,8 +19,8 @@ class ProductControllers extends Controller
         ->join('tb1_brand_product','tb1_brand_product.brand_id','=','products.brand_id')
         ->where('category_status', 1)
         ->where('brand_status', 1)
-        ->orderBy('products.product_id', 'desc')->get();
-        // $product=DB::table('products')->get();
+        ->orderBy('products.product_id', 'desc')
+        ->paginate(10)->appends(request()->query());
         return view('product.index')->with(['product_pr'=>$product]);
     }
     public function create() 
@@ -146,5 +146,16 @@ class ProductControllers extends Controller
             'image'=>$imageName]);
             return redirect()->action([ProductControllers::class, "index"]);
     }
-        
+       
+    public function search(Request $request){
+        $keyword = $request->keyword;
+        $search_product=DB::table('products')
+        ->join('tb1_category_product','tb1_category_product.category_id','=','products.category_id')
+        ->join('tb1_brand_product','tb1_brand_product.brand_id','=','products.brand_id')
+        ->where('category_status', 1)
+        ->where('brand_status', 1)
+        ->where('product_name', 'like', '%'.$keyword. '%')
+        ->paginate(10)->appends(request()->query());
+        return view('product.search')->with('search_product', $search_product);
+    }
 }

@@ -1,13 +1,12 @@
 @extends('layoutfrontend')
-@section('contents')
+@section('content')
 <div class="container category-show">
       <div class="row mb-5">
         <div class="col-md-3">
         <div class="card mb-4">
         <div class="card-header">Categories</div>
-        
         <ul class="list-group">
-        @foreach($categorys_gundam as $gundam_category)
+          @foreach($categorys_gundam as $gundam_category)
           <a href="{{url('/show_category_detail/'.$gundam_category->category_id)}}" class="list-group-item list-group-item-action view-all"><b>{{$gundam_category->category_name}}</b></a>        
           @foreach($brand as $gundam_brand)
           @if($gundam_brand->category_id == $gundam_category->category_id)
@@ -84,18 +83,11 @@
               <div class="row">
               @foreach ($filter as $item)
                 <div class="item col-xs-12 col-md-6 col-lg-4 mt-3 mb-3">
-                  <a href="{{url('product_detail/'.$item->product_id)}}" class="link-product">
                   <div class="card">
+                    <a href="{{url('product_detail/'.$item->product_id)}}" class="link-product" style="color: black;">
                     <img class="card-img-top img-card-edit" src="{{ url("/images/$item->image") }}" alt="" />
                     <div class="card-body">
                     <p class="h6"><small class="text-muted filter-brand name-brand-product">Brand Model: {{$item->brand_name}}</small></br><span class="name-product">{{$item->product_name}}</span></p>
-                      <p class="m-0">
-                        <!-- <i class="fa-xs far fa-star"></i>
-                        <i class="fa-xs far fa-star"></i>
-                        <i class="fa-xs far fa-star"></i>
-                        <i class="fa-xs far fa-star"></i>
-                        <i class="fa-xs far fa-star"></i> -->
-                      </p>
                       <p class="h5 m-0">${{$item->product_price}}
                       @if ($item->sale == null)
                         <s class="lead text-muted" hidden>${{$item->sale}}</s>
@@ -104,25 +96,13 @@
                       @endif
                       </p>
                     </div>
+                    </a>
                     <div class="card-footer p-0">
                       <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-light">
-                          <i class="fas fa-cart-plus"></i>
-                          <span>Add Cart</span>
-                        </button>
-                        <button type="button" class="btn btn-light">
-                          <i class="fas fa-shopping-cart"></i>
-                        </button>
-                        <button type="button" class="btn btn-light">
-                          <i class="fas fa-heart"></i>
-                        </button>
-                        <button type="button" class="btn btn-light">
-                          <i class="fas fa-sync-alt"></i>
-                        </button>
+                        <a href="#" data-url="{{route('cart', ['product_id' => $item->product_id])}}" class="btn btn-secondary cart" role="button" aria-disabled="true"><i class="fas fa-cart-plus"></i> Add Cart</a>
                       </div>
                     </div>
                   </div>
-                </a>
                 </div>
                 @endforeach
               </div>
@@ -136,7 +116,7 @@
             <div class="card-footer p-3">
               <div class="row">
                 <div class="col-md-12">
-                  
+                  {{$filter->links()}}
                 </div>
               </div>
             </div>
@@ -145,6 +125,31 @@
         </div>
       </div>
     </div>
+
+    <script>
+      function addToCart(e) {
+        e.preventDefault();
+        let url = $(this).data('url');
+
+        $.ajax({
+          url: url,     
+          type: 'GET',   
+          dataType: 'JSON',         
+          success: function(data){
+            if (data.code === 200) {
+              alert('Add to cart successfully');
+            }
+          },
+          error: function(){
+
+          }
+        });
+      }
+
+      $(document).ready(function () {
+        $('.cart').on('click', addToCart);
+      });
+    </script>
 @endsection
 
 

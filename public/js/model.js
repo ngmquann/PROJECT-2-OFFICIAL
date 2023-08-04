@@ -18,4 +18,38 @@ $(document).ready(function () {
             " - $" +
             $("#slider-range").slider("values", 1)
     );
+
+    function checkDisplay() {
+        localStorage.setItem("display", "grid");
+    }
+
+    function clickList() {
+        localStorage.display = "list";
+    }
+
+    function clickGrid() {
+        localStorage.display = "grid";
+    }
+
+    if (localStorage.display == "list") {
+        $(".item").removeClass("col-lg-4");
+        $(".item").removeClass("col-md-6");
+        $(".item").addClass("col-lg-12");
+    }
+
+    if (localStorage.display == "grid") {
+        $(".item").removeClass("col-lg-12");
+        $(".item").addClass("col-lg-4");
+    }
+    $("#list").click(function () {
+        clickList();
+        $(".item").removeClass("col-lg-4");
+        $(".item").removeClass("col-md-6");
+        $(".item").addClass("col-lg-12");
+    });
+    $("#grid").click(function () {
+        clickGrid();
+        $(".item").removeClass("col-lg-12");
+        $(".item").addClass("col-lg-4");
+    });
 });

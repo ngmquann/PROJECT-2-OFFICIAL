@@ -1,6 +1,5 @@
 <!-- Lưu tại resources/views/product/index.blade.php -->
 @extends('layout.layout')
-@section('title', 'product index')
 @section('content')
 <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -55,7 +54,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($product_pr as $p)
+                                @foreach($search_product as $p)
                                     <tr>
                                         <td>{{ $p->product_id}}</td>
                                         <td>{{ $p->category_name}}</td>
@@ -91,22 +90,10 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Product Id</th>
-                                    <th>Category</th>
-                                    <th>Brand</th>
-                                    <th>Product Name</th>
-                                    <th>Price</th>
-                                    <th>Image</th>
-                                    <th>Status</th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                     <!-- /.card-body -->
-                    {{$product_pr->links()}}
+                    {{$search_product->links()}}
                 </div>
                 <!-- /.card -->
             </div>
@@ -114,19 +101,4 @@
         </div>
         <!-- /.row -->
     </section>
-    @endsection
-    @section('script-section')
-    <script>
-        $(document).ready(function() 
-        {
-            $('#product').DataTable({
-                paging: true,
-                lengthChange: false,
-                searching: false,
-                ordering: true,
-                info: true,
-                autoWidth: false,
-            });
-        });
-    </script>
 @endsection

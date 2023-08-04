@@ -9,20 +9,29 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/frontend.css') }}" media="screen">
     <!-- <link rel="stylesheet" href="{{asset('css/home.css') }}"> -->
     <!-- <link rel="stylesheet" href="{{ asset('css/editbackend.css') }}"> -->
-    <script class="u-script" type="text/javascript" src="{{ asset('frontend/js/jquery.js') }}" defer=""></script>
+     <!-- link gg font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+    <!-- link css -->
+    <link rel="stylesheet" href="{{asset('css/style.css') }}">
+    @yield('addCSS')
+    <!-- link bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!-- link font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!-- link jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- link jquery ui -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script class="u-script" type="text/javascript" src="{{ asset('frontend/js/nicepage.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ asset('frontend/js/scrip.js') }}" defer=""></script>
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
   
-    
-    <!-- <script type="application/ld+json">{
-		"@context": "#",
-		"@type": "Organization",
-		"name": "",
-		"logo": "images/default-logo.png"
-}</script> -->
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Page 2">
     <meta property="og:type" content="website">
@@ -49,14 +58,24 @@
               </ul>
             </li>
             @endforeach
-            <!--
-            <li class="u-nav-item">
-              <a class="u-button-style u-nav-link " href="#" >Page 1</a>
+            <li class="nav-item">
+              <a href="{{route('showCart')}}">
+              <i class="fa-solid fa-cart-shopping" style="color: black; opacity: 1;"></i>
+              </a>
             </li>
-            <li class="u-nav-item">
-              <a class="u-button-style u-nav-link " href="#" >Page 2</a>
-            </li> -->
-            
+            <li class="nav-item">
+              @if (session('user_name'))
+                <div style="display: flex;">
+                  <a href="{{url('profile/'.session('id'))}}" class="nav-link">
+                    <i class="fa-solid fa-user"></i> {{ session('user_name') }}
+                  </a>
+                    <a class="nav-link" href="{{ route('logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a>
+                </div>
+              @elseif(session('user_name') == null)
+                  <a href="{{ route('showLogin') }}" class="btn btn-primary">Login</a>
+              @endif
+            </li>
+          </ul>
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
@@ -83,22 +102,59 @@
       </button>
     <!-- end back to top -->
     <!-- Body-->
-    @yield('home')
+    @yield('content')
     <!-- end Body -->
     
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-9fd8"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
-      </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="#" target="_blank">
-        <span>Website Gundam</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
+    <footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Text -->
+    <section class="mb-4">
+      <h1>GUNDAM - X</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+        eum harum corrupti dicta, aliquam sequi voluptate quas.
       </p>
-      <a class="u-link" href="" target="_blank">
-        <span>Website Builder Software</span>
-      </a>. 
     </section>
-  
-</body></html>
+    <!-- Section: Text -->
+
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-github"></i></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-white" href="home.html">gundam-x.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+<!-- js -->
+  <script src="{{asset('js/app2.js') }}"></script>
+  @yield('addJS')
+
+</body>
+
+</html>

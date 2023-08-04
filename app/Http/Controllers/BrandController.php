@@ -28,7 +28,8 @@ class BrandController extends Controller
         $data_category=DB::table('tb1_category_product')->where('category_status', 1)->orderBy('category_id', 'desc')->get();
         $data_brand=DB::table('tb1_brand_product')
         ->join('tb1_category_product','tb1_category_product.category_id','=','tb1_brand_product.category_id')
-        ->orderBy('tb1_brand_product.brand_id', 'desc')->get();
+        ->orderBy('tb1_brand_product.brand_id', 'desc')
+        ->paginate(10)->appends(request()->query());
         return view('brand.createbrand')->with(['datas'=>$data_brand])->with(['datas_category'=>$data_category]);
     }
     public function save_brand(Request $request)

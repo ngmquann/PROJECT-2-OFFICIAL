@@ -14,7 +14,8 @@ class CategoryController extends Controller
 {
     public function create_category()
     {
-        $data_category=DB::table('tb1_category_product')->orderBy('category_id', 'desc')->get();
+        $data_category=DB::table('tb1_category_product')->orderBy('category_id', 'desc')
+        ->paginate(10)->appends(request()->query());
         return view('category.createcategory')->with(['datas'=>$data_category]);
         
     }

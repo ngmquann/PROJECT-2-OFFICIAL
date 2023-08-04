@@ -12,9 +12,21 @@ class ProductController1 extends Controller
 {
   public function showProductHome()
   {
-    $categorys = DB::table('tb1_category_product')->where('category_status','1')->where('category_id','1')->orderBy('category_id', 'desc')->get();
-    $category = DB::table('tb1_category_product')->where('category_status','1')->whereNotIn('category_id', [1])->get();
+    $categorys = DB::table('tb1_category_product')->where('category_status','1')->get();
     $brand = DB::table('tb1_brand_product')->where('brand_status','1')->get();
+    $data_product=DB::table('products')
+    ->join('tb1_category_product','tb1_category_product.category_id','=','products.category_id')
+    ->join('tb1_brand_product','tb1_brand_product.brand_id','=','products.brand_id')
+    ->where('category_status', 1)
+    ->where('brand_status', 1)
+    ->orderBy('products.product_id', 'desc')->get();
+    $news = DB::table('news_gundam')->where('news_status','1')->take(4)->get();
+    $data_home=[
+        'cate_edit'=>$categorys,
+        'brand'=>$brand,
+        'producthome'=>$data_product,
+        'news_gundam'=>$news
+    ];
 
     if (isset($_GET['start_price']) && isset($_GET['end_price'])) {
       $start_price = $_GET['start_price'];
@@ -93,6 +105,6 @@ class ProductController1 extends Controller
         ->paginate(6)->appends(request()->query());
       }
     }
-    return view('model')->with(['filter' => $filter])->with(['datas_cate'=>$categorys])->with(['datas_categ'=>$category])->with(['brand'=>$brand]);
+    return view('model', $data_home)->with(['filter' => $filter]);
   }
 }

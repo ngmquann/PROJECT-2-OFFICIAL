@@ -15,6 +15,7 @@ class RegisterController extends Controller
 {
     public function get(){
         $categorys = DB::table('tb1_category_product')->where('category_status','1')->get();
+        $category = DB::table('tb1_category_product')->where('category_status','1')->whereNotIn('category_id', [1])->get();
         $brand = DB::table('tb1_brand_product')->where('brand_status','1')->get();
         $data_product=DB::table('products')
         ->join('tb1_category_product','tb1_category_product.category_id','=','products.category_id')
@@ -22,12 +23,14 @@ class RegisterController extends Controller
         ->where('category_status', 1)
         ->where('brand_status', 1)
         ->orderBy('products.product_id', 'desc')->get();
+        $data_news = DB::table('news_gundam')->where('news_status','1')->get();
         $news = DB::table('news_gundam')->where('news_status','1')->take(4)->get();
-        $data_home=[
-            'cate_edit'=>$categorys,
-            'brand'=>$brand,
-            'producthome'=>$data_product,
-            'news_gundam'=>$news
+        $data_home = [
+            'cate_edit'=> $categorys,
+            'brand'=> $brand,
+            'producthome'=> $data_product,
+            'news_gundam'=> $news,
+            'datanews'=> $data_news
         ];
 
         return view('register', $data_home);
@@ -65,6 +68,7 @@ class RegisterController extends Controller
 
     public function showLogin(){
         $categorys = DB::table('tb1_category_product')->where('category_status','1')->get();
+        $category = DB::table('tb1_category_product')->where('category_status','1')->whereNotIn('category_id', [1])->get();
         $brand = DB::table('tb1_brand_product')->where('brand_status','1')->get();
         $data_product=DB::table('products')
         ->join('tb1_category_product','tb1_category_product.category_id','=','products.category_id')
@@ -72,12 +76,14 @@ class RegisterController extends Controller
         ->where('category_status', 1)
         ->where('brand_status', 1)
         ->orderBy('products.product_id', 'desc')->get();
+        $data_news = DB::table('news_gundam')->where('news_status','1')->get();
         $news = DB::table('news_gundam')->where('news_status','1')->take(4)->get();
-        $data_home=[
-            'cate_edit'=>$categorys,
-            'brand'=>$brand,
-            'producthome'=>$data_product,
-            'news_gundam'=>$news
+        $data_home = [
+            'cate_edit'=> $categorys,
+            'brand'=> $brand,
+            'producthome'=> $data_product,
+            'news_gundam'=> $news,
+            'datanews'=> $data_news
         ];
         return view('login', $data_home);
     }
@@ -109,6 +115,7 @@ class RegisterController extends Controller
     public function logout(Request $request){
         Auth::logout();
         $request->session()->forget('user_name');
+        $request->session()->forget('id');
         return redirect()->route('home');
     }
 }

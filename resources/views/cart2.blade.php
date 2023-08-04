@@ -88,9 +88,7 @@
                   </div>
                 </li>
               </ul>
-              <button type="button" class="btn btn-primary btn-lg btn-block">
-                Go to checkout
-              </button>
+              <a class="btn btn-primary" href="{{url('checkout')}}" role="button">Go to checkout</a>
             </div>
           </div>
         </div>

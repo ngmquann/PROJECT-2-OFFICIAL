@@ -83,6 +83,7 @@ Route::get('/active_productstatus/{product_id}',[ProductControllers::class,'acti
 Route::get('/update_product/{product_id}',[ProductControllers::class,'edit_product']);
 Route::post('/post_update_product/{product_id}',[ProductControllers::class,'postCreateUpdate']);
 Route::get('/delete_product/{product_id}',[ProductControllers::class,'delete']);
+Route::post('/search',[ProductControllers::class,'search'])->name('search');
 // });
 
 //--news admin--//
@@ -117,6 +118,16 @@ Route::get('/product_detail/{product_id}',[ProductDetailController::class,'get']
 Route::get('/contact',[ContactController::class,'get']);
 
 //--Cart--//
-Route::get('/show-cart',[CartController::class,'showCart'])->name('showCart');
-Route::get('/update-cart',[CartController::class,'updateCart'])->name('updateCart');
-Route::get('/delete-cart',[CartController::class,'deleteCart'])->name('deleteCart');
+Route::middleware('auth.check')->group(function () {
+  Route::get('/cart/{product_id}',[CartController::class,'cart'])->name('cart');
+  Route::get('/show-cart',[CartController::class,'showCart'])->name('showCart');
+  Route::get('/update-cart',[CartController::class,'updateCart'])->name('updateCart');
+  Route::get('/delete-cart',[CartController::class,'deleteCart'])->name('deleteCart');
+  Route::get('/checkout',[CartController::class,'checkout'])->name('checkout');
+  Route::post('/save-checkout',[CartController::class,'saveCheckout'])->name('saveCheckout');
+  Route::post('/order-place',[CartController::class,'orderPlace'])->name('orderPlace');
+});
+
+//-- Admin Order--//
+Route::get('/admin_order',[CartController::class,'manage']);
+Route::get('/view-order/{order_id}',[CartController::class,'viewOrder']);

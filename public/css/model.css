@@ -16,6 +16,13 @@
     display: inline-block;
 }
 
+.h6 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
 .detail {
     text-decoration: none;
     color: black;
@@ -32,12 +39,7 @@
 
 .col-lg-4 > .card {
     width: 294px;
-    height: 478px;
-}
-
-.col-lg-4 > .card > .card-body > .h6 {
-    width: 276px;
-    height: 57px;
+    height: 494px;
 }
 
 .icon-buy {

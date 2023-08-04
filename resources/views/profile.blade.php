@@ -15,21 +15,21 @@
                 </div>
               </div>
               @endforeach
-              <hr class="hr_lg" style="margin-top: 6px;">
+              <!-- <hr class="hr_lg" style="margin-top: 6px;"> -->
               <div class="col-xs-12">
               <p id="changePassword"><i class="fa-solid fa-key" style="color: rgb(74, 74, 237);"></i> Change password</p>
               <p id="booking"><i class="fa-solid fa-calendar-days" style="color: rgb(74, 74, 237);"></i> Purchase history</p>
             </div>
             </div>
           </div>
-            <hr class="hr_res">
+            <!-- <hr class="hr_res"> -->
           <div class="col-sm-12 col-md-8 col-lg-9">
             <div class="row" id="profile">
               <div class="col2">
                 <p class="headerContent"><i class="fa-regular fa-address-card"></i> Profile</p>
                 <div class="des">Welcome to Gundam-X</div>
               </div>
-              <hr class="hr_lg_x">
+              <!-- <hr class="hr_lg_x"> -->
 
               @if(session('mess'))
                 <div class="alert alert-primary" role="alert">
@@ -37,7 +37,7 @@
                 </div>
               @endif
               @foreach($user as $key)
-              <form autocomplete='off' class='form' method="POST" action="{{route('profile.update', ['customer_id' => $key->customer_id])}}">
+              <form autocomplete='off' class='form mt-4' method="POST" action="{{route('profile.update', ['customer_id' => $key->customer_id])}}">
               @csrf
               <div id="contentProfile">
                 <div class="mb-3 row">
