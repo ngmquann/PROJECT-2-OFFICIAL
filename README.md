@@ -22,10 +22,12 @@ GUNDAM-X is a website that offers customers the opportunity to access a diverse 
 ## How To Run
 - Backend ()
     + Installation Laragon
-        Install PHP server Laragon
-        Run it
-        Clone this repo into www folder of Laragon
+        <p>
+            Install PHP server Laragon <br>
+        Run it<br>
+        Clone this repo into www folder of Laragon<br>
         Download dbgundamx.sql file in this repo and import to phpmyadmin or mysql and simple run it
+        </p>
 +Setup backend database
 $ Create a .env file in your server and backend folder
 $ See the .env sample
