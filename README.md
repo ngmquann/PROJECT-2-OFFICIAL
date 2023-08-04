@@ -41,10 +41,6 @@ GUNDAM-X is a website that offers customers the opportunity to access a diverse 
             - $ php artisan passport:install <br>
             - $ php artisan serve
            </p>
-- Frontend ()
-    + Installation dependencies
-            - $ npm i
-            - $ npm start
 
 
 ## Features:
