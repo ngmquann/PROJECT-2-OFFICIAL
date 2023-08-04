@@ -41,8 +41,9 @@ class HomeController extends Controller
                 $news = $items->first();
                 return ['news' => $news, 'tags' => $tags];
             });
+        $tags = DB::table('news_tag')->get();
 
-        return view('news')->with(['news' => $news]);
+        return view('news')->with(['news' => $news])->with(['tags' => $tags]);
     }
 
     public function show_news($id)
@@ -56,14 +57,35 @@ class HomeController extends Controller
 
         // dd($selected_tag);
         $news = DB::table('news_gundam')->where('news_id', intval($id))->first();
-
+        $tags = DB::table('news_tag')->get();
         $data = [
             'news' => $news,
-            'selected_tag' => $selected_tag
+            'selected_tag' => $selected_tag,
+            'tags' => $tags
         ];
 
 
         return view('showNews', $data);
     }
 
+    public function searchNewsByTag(Request $request)
+    {
+        $tagId = $request->input('tag');
+        // dd($tagId);
+        $news = DB::table('news_gundam')
+            ->join('news_gundam_tags', 'news_gundam.news_id', '=', 'news_gundam_tags.news_id')
+            ->join('news_tag', 'news_gundam_tags.tag_id', '=', 'news_tag.tag_id')
+            ->select('news_gundam.*', 'news_tag.*')
+            ->where('news_tag.tag_id', $tagId)
+            ->get()
+            ->groupBy('news_id')
+            ->map(function ($items) {
+                $tags = $items->pluck('tag_name')->toArray();
+                $news = $items->first();
+                return ['news' => $news, 'tags' => $tags];
+            });
+        $tags = DB::table('news_tag')->get();
+
+        return view('news')->with(['news' => $news])->with(['tags' => $tags]);
+    }
 }

@@ -134,9 +134,9 @@
         let url = $(this).data('url');
 
         $.ajax({
-          url: url,     
-          type: 'GET',   
-          dataType: 'JSON',         
+          url: url,
+          type: 'GET',
+          dataType: 'JSON',
           success: function(data){
             if (data.code === 200) {
               alert('Add to cart successfully');
