@@ -8,16 +8,16 @@ GUNDAM-X is a website that offers customers the opportunity to access a diverse 
 
 ## Components:
 
-Carousel
-Search Bar
-Slider Gundam selection
-Product news
-Product detail pages
-Payment
-Login and Register
-User profile
-Admin CRUD
-Many other components...
+- Carousel
+- Search Bar
+- Slider Gundam selection
+- Product news
+- Product detail pages
+- Payment
+- Login and Register
+- User profile
+- Admin CRUD
+- Many other components...
 
 ## How To Run
 
