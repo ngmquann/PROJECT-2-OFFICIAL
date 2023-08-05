@@ -6,6 +6,8 @@ An e-commerce and product management application for Gundam models using ReactJS
 
 GUNDAM-X is a website that offers customers the opportunity to access a diverse range of high-quality Gundam model products and stay updated with the latest information on upcoming Gundam model releases in the market. Customers simply need to select their desired products, add them to the shopping cart, provide necessary information, and proceed with the payment. The products will be delivered to the customers through a shipping service.
 
+<a href="https://1drv.ms/b/s!AjzcY05fNFf5gVnwTgPDtX-g2x_O?e=yyddjk" target="_blank"> <b>tasksheet review</b> </a>
+
 ## Components:
 
 - Carousel
