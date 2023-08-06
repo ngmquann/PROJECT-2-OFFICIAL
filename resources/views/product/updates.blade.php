@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Content</label>
-                                <textarea class="form-control ckeditor" name="content_product"  placeholder="Content">{{$edit_p->product_content}}</textarea>
+                                <textarea id="myeditorinstance" class="form-control ckeditor" name="content_product"  placeholder="Content">{{$edit_p->product_content}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Image</label><br>
@@ -63,7 +63,7 @@
                                     ?>
                                     <option value="{{$edit_p->product_status}}">Display</option>
                                     <option value="0">Hide</option>
-                                    <?php 
+                                    <?php
                                         }
                                     ?>
                                 </select>
@@ -87,6 +87,6 @@
             </section>
 
     </div>
-    
+
 </div>
 @endsection

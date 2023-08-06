@@ -30,13 +30,14 @@
         rel='stylesheet' type='text/css'>
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <script src="https://cdn.tiny.cloud/1/fqurez10grbc8fb8o4ant8pcohtzj1nrjfr7x3q3om89dkkw/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/fqurez10grbc8fb8o4ant8pcohtzj1nrjfr7x3q3om89dkkw/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
     <script>
         tinymce.init({
             selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
-            height:500,
+            height: 500,
             plugins: 'searchreplace autolink directionality visualblocks visualchars image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap linkchecker emoticons autosave',
-            toolbar: 'undo redo print spellcheckdialog formatpainter | blocks fontfamily fontsize | bold italic underline forecolor backcolor | link image | alignleft aligncenter alignright alignjustify lineheight | checklist bullist numlist indent outdent | removeformat',
+            toolbar: 'undo redo print spellcheckdialog formatpainter | formatselect | blocks fontfamily fontsize | bold italic underline forecolor backcolor | link image | alignleft aligncenter alignright alignjustify lineheight | checklist bullist numlist indent outdent | removeformat',
             a11y_advanced_options: true,
             file_picker_types: 'image',
             file_picker_callback: (cb, value, meta) => {
@@ -91,33 +92,34 @@
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
-            </aside>
-            <!-- /.control-sidebar -->
-        </div>
-        <!-- ./wrapper -->
-        <!-- jQuery -->
-        <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-        <!-- Bootstrap 4 -->
-        <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <!-- DataTables -->
-        <script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
-        <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
-        <!-- AdminLTE App -->
-        <!--<script src="{{ asset('js/adminlte.min.js') }}"></script>-->
-        <script src="{{ asset('js/adminlte.js') }}"></script>
-        <!--javascrip-->
-        <script src="{{ asset('js/javascrip.js') }}"></script>
-        <!-- AdminLTE for demo purposes -->
-        <!-- <script src="{{ asset('dist/js/demo.js') }}"></script> -->
-        <!-- page script -->
-        <script src="{{asset('backend/js/bootstrap.js')}}"></script>
-        <script src="{{asset('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
-        <script src="{{asset('backend/js/scripts.js')}}"></script>
-        <script src="{{asset('backend/js/jquery.slimscroll.js')}}"></script>
-        <script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
-        <script src="{{asset('backend/js/jquery2.0.3.min.js')}}"></script>
-        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
-        <script src="{{asset('backend/js/jquery.scrollTo.js')}}"></script>
-        @yield('script-section')
-    </body>
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- DataTables -->
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
+    <!-- AdminLTE App -->
+    <!--<script src="{{ asset('js/adminlte.min.js') }}"></script>-->
+    <script src="{{ asset('js/adminlte.js') }}"></script>
+    <!--javascrip-->
+    <script src="{{ asset('js/javascrip.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <!-- <script src="{{ asset('dist/js/demo.js') }}"></script> -->
+    <!-- page script -->
+    <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('backend/js/jquery.dcjqaccordion.2.7.js') }}"></script>
+    <script src="{{ asset('backend/js/scripts.js') }}"></script>
+    <script src="{{ asset('backend/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('backend/js/jquery.nicescroll.js') }}"></script>
+    <script src="{{ asset('backend/js/jquery2.0.3.min.js') }}"></script>
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+    <script src="{{ asset('backend/js/jquery.scrollTo.js') }}"></script>
+    @yield('script-section')
+</body>
+
 </html>

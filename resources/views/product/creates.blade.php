@@ -28,7 +28,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Content</label>
-                                <textarea class="form-control ckeditor" name="content_product" placeholder="Content"></textarea>
+                                <textarea id="myeditorinstance" class="form-control ckeditor" name="content_product" placeholder="Content"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Image</label>
@@ -37,11 +37,11 @@
                             <div class="form-group-status">
                                 <label for="exampleInputPassword1">Category</label>
                                 <select name="category_pr" class="form-control input-lg m-bot15" id="status_category">
-                                
+
                                     @foreach($category_pr as $cate_pr)
                                         <option value="{{$cate_pr->category_id}}">{{$cate_pr->category_name}}</option>
                                     @endforeach
-                                    
+
                                 </select>
                                 <label for="exampleInputPassword1">Brand</label>
                                 <select name="brand_pr" class="form-control input-lg m-bot15" id="status_brand">
@@ -73,6 +73,6 @@
             </section>
 
     </div>
-    
+
 </div>
 @endsection

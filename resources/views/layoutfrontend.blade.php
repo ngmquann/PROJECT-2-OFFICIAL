@@ -74,12 +74,13 @@
                             </ul>
                         </li>
                     @endforeach
-                    <li class="nav-item">
+                    <li><a href="{{ url('/news') }}">About</a></li>
+                    <li class="">
                         <a href="{{ route('showCart') }}">
                             <i class="fa-solid fa-cart-shopping" style="color: black; opacity: 1;"></i>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="">
                         @if (session('user_name'))
                             <div style="display: flex;">
                                 <a href="{{ url('profile/' . session('id')) }}" class="nav-link">
@@ -89,7 +90,9 @@
                                         class="fa-solid fa-right-from-bracket"></i></a>
                             </div>
                         @elseif(session('user_name') == null)
-                            <a href="{{ route('showLogin') }}" class="btn btn-primary">Login</a>
+                            <div class="btn btn-primary btn-sm">
+                                <a href="{{ route('showLogin') }}">Login</a>
+                            </div>
                         @endif
                     </li>
                 </ul>
