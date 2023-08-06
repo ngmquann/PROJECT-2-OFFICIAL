@@ -41,5 +41,10 @@ class ContentServiceProvider extends ServiceProvider
             $view->with(['datas_cate' => $categorys])->with(['datas_categ' => $category])->with(['brand' => $brand]);
         });
 
+        view()->composer('layout.bloglayout', function ($view) {
+            $news = DB::table('news_gundam')->limit(5)->get();
+            $view->with(['news' => $news]);
+        });
+
     }
 }

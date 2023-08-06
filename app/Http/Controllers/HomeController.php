@@ -21,12 +21,10 @@ class HomeController extends Controller
             ->where('category_status', 1)
             ->where('brand_status', 1)
             ->orderBy('products.product_id', 'desc')->get();
-        $data_news = DB::table('news_gundam')->where('news_status', '1')->get();
         $news = DB::table('news_gundam')->where('news_status', '1')->take(4)->get();
         $data_home = [
             'producthome' => $data_product,
-            'news_gundam' => $news,
-            'datanews' => $data_news
+            'news_gundam' => $news
         ];
         return view('frontend.show_home', $data_home);
     }
